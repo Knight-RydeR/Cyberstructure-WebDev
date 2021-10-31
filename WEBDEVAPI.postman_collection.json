@@ -1,0 +1,396 @@
+{
+	"info": {
+		"_postman_id": "496370ea-46d5-4d08-8229-6a28be04e385",
+		"name": "WEBDEVAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\":\"mohammad\",\"password\":\"katka99\",\"nick\":\"blockchaindev\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1639/api/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1639",
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "bearer",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxN2U3ZjA3ZjQzODMyMmU3NTRlOTdhNSIsInVzZXJuYW1lIjoic2FtYWQiLCJuaWNrIjoiY2hvbXVJbnNhYW4iLCJpYXQiOjE2MzU2ODY0MzcsImV4cCI6MTYzNTY5MDAzN30.xQhab45y0ejGqtIcrurPk8yR19-dRoCGJeCM7TwFMmk",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\":\"mohammad\",\"password\":\"katka99\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1639/api/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1639",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "check jwt authentication",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "bearer",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxN2VkMzMzYjA3ODI3MDZjYzFhMGE5NiIsInVzZXJuYW1lIjoibW9oYW1tYWQiLCJuaWNrIjoiYmxvY2tjaGFpbmRldiIsImlhdCI6MTYzNTcwMTU3OSwiZXhwIjoxNjM1NzE1OTc5fQ.b47WzuJWl_vHSP--cfah-pp7wnvKwWv9eiEPQGDeZo4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1639/api/auth/check",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1639",
+					"path": [
+						"api",
+						"auth",
+						"check"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createProduct",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "bearer",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxN2VkMzMzYjA3ODI3MDZjYzFhMGE5NiIsInVzZXJuYW1lIjoibW9oYW1tYWQiLCJuaWNrIjoiYmxvY2tjaGFpbmRldiIsImlhdCI6MTYzNTcwMTU3OSwiZXhwIjoxNjM1NzE1OTc5fQ.b47WzuJWl_vHSP--cfah-pp7wnvKwWv9eiEPQGDeZo4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"_id\":1,\n    \"nameOfProduct\":\"i7 87040\",\n    \"price\":3002,\n    \"category\":\"Pafrocessor\",\n    \"imageUrl\":\"To fAdd\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1639/api/auth/createProduct",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1639",
+					"path": [
+						"api",
+						"auth",
+						"createProduct"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getProduct",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1639/api/search/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1639",
+					"path": [
+						"api",
+						"search",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getProductByCategory",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1639/api/search/category/PROCESSOR",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1639",
+					"path": [
+						"api",
+						"search",
+						"category",
+						"PROCESSOR"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "saveUserBUild",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "bearer",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxN2VkMzMzYjA3ODI3MDZjYzFhMGE5NiIsInVzZXJuYW1lIjoibW9oYW1tYWQiLCJuaWNrIjoiYmxvY2tjaGFpbmRldiIsImlhdCI6MTYzNTcwMTU3OSwiZXhwIjoxNjM1NzE1OTc5fQ.b47WzuJWl_vHSP--cfah-pp7wnvKwWv9eiEPQGDeZo4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Processor\":\"i7 8700\",\n    \"Motherboard\":\"MSI B365M provdh\",\n    \"Ram\":\"CORSAIR 2X8GB Vengenance\",\n    \"PSU\":\"CORSAIR VS 650\",\n    \"Storage\":\"128 Gb sata ssd, 500 GB M.2 SSD\",\n    \"GPU\":\"NVIDIA GTX 1050TI 4GB OC\",\n    \"Cooler\":\"CORSAIR MA620P\",\n    \"FANS\":\"4X NZXT\",\n    \"Case\":\"CORSAIR SPEC05\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1639/api/auth/saveBuild",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1639",
+					"path": [
+						"api",
+						"auth",
+						"saveBuild"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateProduct",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "bearer",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxN2VkMzMzYjA3ODI3MDZjYzFhMGE5NiIsInVzZXJuYW1lIjoibW9oYW1tYWQiLCJuaWNrIjoiYmxvY2tjaGFpbmRldiIsImlhdCI6MTYzNTcwMTU3OSwiZXhwIjoxNjM1NzE1OTc5fQ.b47WzuJWl_vHSP--cfah-pp7wnvKwWv9eiEPQGDeZo4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"price\":3100}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1639/api/auth/updateProduct/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1639",
+					"path": [
+						"api",
+						"auth",
+						"updateProduct",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getBuild",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1639/api/communityBuilds/rating/617e8e83c5d567427858b86f",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1639",
+					"path": [
+						"api",
+						"communityBuilds",
+						"rating",
+						"617e8e83c5d567427858b86f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCommunityBuildRating",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1639/api/communityBuilds/rating/617e8e83c5d567427858b86f",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1639",
+					"path": [
+						"api",
+						"communityBuilds",
+						"rating",
+						"617e8e83c5d567427858b86f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllBuilds",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1639/api/communityBuilds",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1639",
+					"path": [
+						"api",
+						"communityBuilds"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "isAdmin",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "bearer",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxN2VkMzMzYjA3ODI3MDZjYzFhMGE5NiIsInVzZXJuYW1lIjoibW9oYW1tYWQiLCJuaWNrIjoiYmxvY2tjaGFpbmRldiIsImlhdCI6MTYzNTcwMTU3OSwiZXhwIjoxNjM1NzE1OTc5fQ.b47WzuJWl_vHSP--cfah-pp7wnvKwWv9eiEPQGDeZo4",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:1639/api/auth/admin/isAdmin/617ebb8a1adb779353cf14d7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1639",
+					"path": [
+						"api",
+						"auth",
+						"admin",
+						"isAdmin",
+						"617ebb8a1adb779353cf14d7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addAdmin",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "bearer",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxN2VkMzMzYjA3ODI3MDZjYzFhMGE5NiIsInVzZXJuYW1lIjoibW9oYW1tYWQiLCJuaWNrIjoiYmxvY2tjaGFpbmRldiIsImlhdCI6MTYzNTcwMTU3OSwiZXhwIjoxNjM1NzE1OTc5fQ.b47WzuJWl_vHSP--cfah-pp7wnvKwWv9eiEPQGDeZo4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"price\":3000}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1639/api/auth/admin/addAdmin/617ebb8a1adb779353cf14d7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1639",
+					"path": [
+						"api",
+						"auth",
+						"admin",
+						"addAdmin",
+						"617ebb8a1adb779353cf14d7"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
