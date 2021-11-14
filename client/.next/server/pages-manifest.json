@@ -1,6 +1,5 @@
 {
   "/_app": "pages/_app.js",
-  "/api/hello": "pages/api/hello.js",
   "/best_price": "pages/best_price.html",
   "/community": "pages/community.html",
   "/compatibility": "pages/compatibility.html",

@@ -154,7 +154,7 @@ const Layout = ({ children  })=>{
 ;// CONCATENATED MODULE: ./pages/_app.js
 
 
-
+//import '../styles/globals.css'
 function MyApp({ Component , pageProps  }) {
     return(/*#__PURE__*/ jsx_runtime_.jsx(components_Layout, {
         children: /*#__PURE__*/ jsx_runtime_.jsx(Component, {
