@@ -1,18 +1,5 @@
 {
   "/_app": "pages/_app.js",
-  "/best_price": "pages/best_price.html",
-  "/community": "pages/community.html",
-  "/compatibility": "pages/compatibility.html",
-  "/homepage": "pages/homepage.html",
-  "/": "pages/index.html",
-  "/login": "pages/login.html",
-  "/make_build": "pages/make_build.html",
-  "/mybuilds": "pages/mybuilds.html",
-  "/power_calc": "pages/power_calc.html",
-  "/products": "pages/products.html",
-  "/signup": "pages/signup.html",
-  "/userprofile": "pages/userprofile.html",
-  "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/404": "pages/404.html"
+  "/_error": "pages/_error.js"
 }

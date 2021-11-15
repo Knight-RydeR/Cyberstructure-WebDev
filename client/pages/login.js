@@ -36,11 +36,11 @@ export default class login extends Component {
         return (
             //<React.Fragment>
                 <div className="container">
-                     <h1 className="offset-2 col-8 mb-5">Quality Assurance Agent Login Page</h1>
+                     <h1 className="offset-2 col-8 mb-5">Login Page</h1>
                 <form>
                     <div className="row">
                         <div className="offset-2 col-8 mb-4">
-                            <label for="Email" class="form-label">Quality Assurance Agent ID</label>
+                            <label for="Email" class="form-label">Name</label>
                             <input type="text" class="form-control" id="Email" placeholder="Enter your unique ID here"  onChange={this.qualityStore}/>
                         </div>
                             <div className="offset-2 col-8 mb-5">

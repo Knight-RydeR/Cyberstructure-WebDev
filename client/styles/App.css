@@ -64,11 +64,6 @@
     font-style: italic;
   }
   
-  .vendorLayout {
-    display: flex;
-    justify-content: center;
-  }
-  
   .fontColored{
     color: black;
   }
