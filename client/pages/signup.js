@@ -5,19 +5,23 @@ export default class signup extends Component {
     constructor (props){
         super(props);
         this.state = {
-            vendorID:"Enter your unique ID here",
-            password:"Enter your password here",
-            nick:"Enter your username here"
+            vendorID:"",
+            password:"",
+            nick:""
         };
         this.login = this.login.bind(this);
         this.vendorStore = this.vendorStore.bind(this);
         this.passStore = this.passStore.bind(this);
         this.nickStore = this.nickStore.bind(this);
     }
-
-    login()
+//vendor id username , passtore password, nickStore nick
+   async login()
     {
         let x = 2;
+       let d = await axios.post('http://localhost:1639/api/register',{
+            username:this.state['vendorID'],password:this.state['password'],nick:this.state['nick']
+        });
+        console.log(d);
     }
 
     vendorStore(e)
@@ -50,32 +54,22 @@ export default class signup extends Component {
                     <div className="row">
                         <h1 className="offset-2 col-8 mb-5">Signup Page</h1>
                         <div className="offset-2 col-8 mb-4">
-                            <label for="Email" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="Email" placeholder={this.state.vendorID} value={this.state.vendorID} onChange={this.vendorStore}/>
+                            <label for="Email" className="form-label">Nick</label>
+                            <input type="text" className="form-control" id="Email" placeholder="Nickname" value={this.state.nickStore} onChange={this.nickStore}/>
                         </div>
                         <div className="offset-2 col-8 mb-4">
-                            <label for="Email" class="form-label">Username</label>
-                            <input type="text" class="form-control" id="Email" placeholder={this.state.vendorID} value={this.state.vendorID} onChange={this.nickStore}/>
+                            <label for="Email" className="form-label">Username</label>
+                            <input type="text" className="form-control" id="Email" placeholder="Username" value={this.state.vendorID} onChange={this.vendorStore}/>
                         </div>
-                        {/* <div className="offset-2 col-8 mb-4">
-                            <label for="Email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="Email" placeholder={this.state.vendorID} value={this.state.vendorID} onChange={this.vendorStore}/>
-                        </div>
+                 
                         <div className="offset-2 col-8 mb-4">
-                            <label for="Email" class="form-label">Contact Number</label>
-                            <input type="text" class="form-control" id="Email" placeholder={this.state.vendorID} value={this.state.vendorID} onChange={this.vendorStore}/>
-                        </div> */}
-                        <div className="offset-2 col-8 mb-4">
-                            <label for="exampleInputPassword1" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter your password here"  onChange={this.passStore}/>
+                            <label for="exampleInputPassword1" className="form-label">Password</label>
+                            <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Enter your password here"  onChange={this.passStore}/>
                         </div>
-                        <div className="offset-2 col-8 mb-5">
-                            <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter your password here" onChange={this.vendorStore}/>
-                        </div>
+                     
                     </div>
                         <div className="row">
-                            <button type="submit" class="btn btn-info col-2 offset-5 mb-4" onClick={this.login}>Register</button>
+                            <button type="submit" className="btn btn-info col-2 offset-5 mb-4" onClick={this.login}>Register</button>
                         </div>
                         <div>
                             
@@ -87,4 +81,3 @@ export default class signup extends Component {
         ) 
     }
 }
-

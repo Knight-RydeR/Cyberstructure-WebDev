@@ -13,15 +13,20 @@ export default class login extends Component {
         this.passStore = this.passStore.bind(this);
     }
 
-    login()
+   async login()
     {
         let x = 2;
+        console.log(this.state['qualityID']);
+        let d = await axios.post('http://localhost:1639/api/login',{
+            username:this.state['qualityID'],password:this.state['password']
+        });
+        console.log(d);
     }
 
     qualityStore(e)
     {
         this.setState({
-            vendorID: e.target.value
+            qualityID: e.target.value
         })
     }
 
@@ -40,18 +45,18 @@ export default class login extends Component {
                 <form>
                     <div className="row">
                         <div className="offset-2 col-8 mb-4">
-                            <label for="Email" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="Email" placeholder="Enter your unique ID here"  onChange={this.qualityStore}/>
+                            <label htmlFor="Email" className="form-label">Name</label>
+                            <input type="text" className="form-control" id="Email" placeholder="Enter your unique ID here"  onChange={this.qualityStore}/>
                         </div>
                             <div className="offset-2 col-8 mb-5">
-                                <label for="exampleInputPassword1" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter your password here" onChange={this.passStore}/>
+                                <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
+                                <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Enter your password here" onChange={this.passStore}/>
                             </div>
                     </div>
                         <div className="row">
-                            <button type="submit" class="btn btn-info col-2 offset-5 mb-4" onClick={this.login}>Login</button>
+                            <button type="submit" className="btn btn-info col-2 offset-5 mb-4" onClick={this.login}>Login</button>
                             <h5 className="offset-5 mb-4">Not registered?</h5>
-                            <a class="btn btn-info col-2 offset-5" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Click here to register now!" href="/signup" role="button">Sign-up.</a>
+                            <a className="btn btn-info col-2 offset-5" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Click here to register now!" href="/signup" role="button">Sign-up.</a>
                         </div>
                         <div>
                             
@@ -63,4 +68,3 @@ export default class login extends Component {
         ) 
     }
 }
-
