@@ -43,9 +43,9 @@ router.post("/login", async (req, res) => {
       }
     );
     console.log(token);
-    res.json({ status: "ok", data: token });
+    res.status(200).json({ status: "ok", data: token });
   } else {
-    await res.json({ status: "error", data: "invalid password" });
+    await res.status(401).json({ status: "error", data: "invalid password" });
   }
 });
 
@@ -71,12 +71,12 @@ router.post("/register", async (req, res) => {
       password,
       nick
     });
-    res.json({ status: "ok",data:response });
+    res.status(200).json({ status: "ok",data:response });
 
     console.log(`User created succesfully ${response}`);
   } catch (e) {
     if ((e.code = 11000))
-      return res.json({ status: "error", error: "Duplicate Account" });
+      return res.status(401).json({ status: "error", error: "Duplicate Account" });
     throw error;
   }
 
