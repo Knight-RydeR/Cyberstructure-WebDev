@@ -20,7 +20,10 @@ export default class login extends Component {
         let d = await axios.post('http://localhost:1639/api/login',{
             username:this.state['qualityID'],password:this.state['password']
         });
-        console.log(d);
+        console.log(d.data.status);
+        // if (d.data == "200") {
+        //     <Link href="/profile"></Link>
+        // }
     }
 
     qualityStore(e)

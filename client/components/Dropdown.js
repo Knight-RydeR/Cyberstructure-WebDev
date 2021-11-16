@@ -4,8 +4,8 @@ import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useSelect } from 'downshift';
 import classNames from 'classnames';
-import DropdownItem from 'path-to-dropdown-item';
-import NativeSelect from 'path-to-your-native-select';
+import DropdownItem from 'DropdownItem';
+import NativeSelect from 'NativeSelect';
 
 import styles from './Dropdown.module.css';
 
@@ -51,6 +51,8 @@ const Dropdown = ({
                 onBlur={ closeMenu }
                 onClick={ toggleMenu }
                 selected={ selectedItem }
+                className={ styles.nativeSelect }
+                onChange={ handleNativeSelectChange }
                 placeholderLabel={ placeholderLabel } />
             <ul className={ styles.menu } { ...getMenuProps() }>
                 { isOpen && renderDropdownItems() }

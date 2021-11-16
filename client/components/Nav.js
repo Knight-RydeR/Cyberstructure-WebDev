@@ -1,6 +1,7 @@
 import Link from 'next/link'
 // import { Button } from '../../react-bootstrap'
 import navStyles from '../styles/Nav.module.css'
+import drop from '../components/Dropdown.js'
 
 const Nav = () => {
     return (
