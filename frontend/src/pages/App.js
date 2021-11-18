@@ -15,7 +15,7 @@ import MakeBuild from "./makeBuild";
 // import Consumption from "./consumption";
 // import BestPrice from "./bestPrice";
 // import Community from "./community";
-// import UserProfile from "./userProfile";
+import UserProfile from "./userProfile";
 // import CheckBuild from "./checkBuild";
 
 function App() {
@@ -31,12 +31,12 @@ function App() {
         <Route path="/signup" component={Register}/>
         {/* <Route path="/products" component={Products}/> */}
         <Route path="/makeBuild" component={MakeBuild}/>
-        {/* <Route path="/compat" component={Compat}/>
-        <Route path="/consumption" component={Consumption}/>
+        {/* <Route path="/compat" component={Compat}/> */}
+        {/* <Route path="/consumption" component={Consumption}/>
         <Route path="/bestPrice" component={BestPrice}/>
-        <Route path="/community" component={Community}/>
+        <Route path="/community" component={Community}/> */}
         <Route path="/userProfile" component={UserProfile}/>
-        <Route path="/checkBuild" component={CheckBuild}/> */}
+        {/* <Route path="/checkBuild" component={CheckBuild}/> */}
       </Switch>
     </Router>
     </div>

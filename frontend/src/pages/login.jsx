@@ -15,19 +15,19 @@ export default class Login extends Component {
                 <div className="AppLogin">
                 <form>
                     <div>
-                        <div>
-                            <label for="Email" class="form-label">Nickname</label>
+                        <div className="mb-3">
+                            <label for="Email" class="form-label mb-3">Nickname</label>
                             <input type="text" class="form-control" id="Email" placeholder="Enter your nickname here"  onChange={this.qualityStore}/>
                         </div>
                             <div className="mb-5">
-                                <label for="exampleInputPassword1" class="form-label">Password</label>
+                                <label for="exampleInputPassword1" class="form-label mb-3">Password</label>
                                 <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter your password here" onChange={this.passStore}/>
                             </div>
                     </div>
                         <div>
                             <button type="submit" class="btn btn-warning mb-4" onClick={this.login}>Login</button>
                             <h5 className="mb-4" style={{color: "white"}}>Not registered?</h5>
-                            <a class="btn btn-warning" style={{color: "white"}} data-bs-toggle="tooltip" data-bs-placement="bottom" title="Click here to register now!" href="/signup" role="button">Sign-up.</a>
+                            <a class="btn btn-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Click here to register now!" href="/signup" role="button">Sign-up.</a>
                         </div>
                 </form>
                 </div>
