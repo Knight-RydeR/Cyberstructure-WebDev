@@ -3,14 +3,14 @@ import React from 'react'
 export const Dropdown = (props) => {
     return (
         <div>
-            <div class="dropdown">
-                <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div className="dropdown">
+                <button className="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Choose your component
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" >Action</a>
-                    <a class="dropdown-item" >Another action</a>
-                    <a class="dropdown-item" >Something else here</a>
+                <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a className="dropdown-item" >Action</a>
+                    <a className="dropdown-item" >Another action</a>
+                    <a className="dropdown-item" >Something else here</a>
                 </div>
                 </div>
         </div>
