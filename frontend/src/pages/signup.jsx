@@ -78,7 +78,7 @@ const Signup =  ()=> {
                             <input type="text" class="form-control" id="username" placeholder="Enter your real name here"  value={username} onChange={event=>setUsername(event.target.value)}/>
                         </div>
                         <div className="mb-4">
-                            <label for="nick" class="form-label">nick</label>
+                            <label for="nick" class="form-label">Nick</label>
                             <input type="text" class="form-control" id="nick" placeholder="Enter your nick here"  value={nick} onChange={event=>setnick(event.target.value)}/>
                         </div>
                             <div className="mb-5">
