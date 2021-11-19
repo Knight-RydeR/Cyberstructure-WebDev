@@ -10,7 +10,12 @@ let router = express.Router();
 
 async function jwtAuthenticator(req, res, next) {
     console.log("here in jwt Middle Ware");
-  let claimedToken = req.headers["bearer"];
+    
+  let claimedToken = req.headers['authorization'];
+  console.log(claimedToken)
+  claimedToken = claimedToken.replace("Bearer ", "");
+  console.log(claimedToken)
+
   try {
     let decode = await jwt.verify(claimedToken, db.config.SECRET);
     let exist = await user.findOne({ _id: decode.id }).lean();
@@ -20,10 +25,10 @@ async function jwtAuthenticator(req, res, next) {
 
     if (await exist) {
       next();
-    } else await res.json({ status: "error", data: "not logged in" });
+    } else await res.status(401).json({ data: "not logged in" });
   } catch (e) {
     console.log(e);
-    res.json({ status: "error", data: e });
+    res.status(401).json({  data: e });
   }
 }
 
@@ -84,11 +89,11 @@ router.post("/createProduct", async (req, res) => {
     res.json({ status: "ok", data: await createProduct });
   } catch (e) {
     console.log(e);
-    res.json({ status: "error", data: e });
+    res.status(400).json({  data: e });
   }
 });
 
-router.put("/updateProduct/:id", async (req, res) => {
+router.patch("/updateProduct/:id", async (req, res) => {
   try {
     let id = req.params.id;
     let updatedProduct = req.body;
@@ -98,8 +103,8 @@ router.put("/updateProduct/:id", async (req, res) => {
     console.log(`New db Response is ${await JSON.stringify(dbResponseNew)}`);
 
     if(dbResponse) {
-        res.json(
-            {status:'updated',
+        res.status(200).json(
+            {
             data:{
             old: await dbResponse,
             new : await dbResponseNew
@@ -109,11 +114,11 @@ router.put("/updateProduct/:id", async (req, res) => {
     
 
     }
-    else res.json({ status: "error", data: "not found" });
+    else res.status(404).json({ data: "not found" });
 
 
   } catch (e) {
-    res.json({ status: "error", data: e });
+    res.status(400).json({ data: e });
   }
 });
 
