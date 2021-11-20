@@ -83,6 +83,21 @@ router.post("/register", async (req, res) => {
 });
 
 //get
+router.get("/search/allProducts", async (req, res) => {
+  try {
+    let id = req.params.id;
+    let dbResponse = await product.find({  }).lean();
+    console.log(await dbResponse);
+    if (dbResponse) {
+      res.status(200).json({ data: dbResponse });
+    } else {
+      res.status(200).json({ error: "this product does not exist" });
+    }
+  } catch (e) {
+    console.log(e);
+    res.status(404).json({ data: e });
+  }
+});
 
 //search product by id, returns one product
 router.get("/search/:id", async (req, res) => {

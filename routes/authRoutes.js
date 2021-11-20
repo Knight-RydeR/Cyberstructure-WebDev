@@ -11,12 +11,14 @@ let router = express.Router();
 async function jwtAuthenticator(req, res, next) {
     console.log("here in jwt Middle Ware");
     
-  let claimedToken = req.headers['authorization'];
-  console.log(claimedToken)
-  claimedToken = claimedToken.replace("Bearer ", "");
-  console.log(claimedToken)
+ 
 
   try {
+    let claimedToken = req.headers['authorization'];
+    console.log(claimedToken)
+    if(!claimedToken)await res.status(401).json({ data: "not logged in" });
+    claimedToken = claimedToken.replace("Bearer ", "");
+    console.log(claimedToken)
     let decode = await jwt.verify(claimedToken, db.config.SECRET);
     let exist = await user.findOne({ _id: decode.id }).lean();
 
