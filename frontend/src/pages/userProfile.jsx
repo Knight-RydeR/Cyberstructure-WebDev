@@ -10,23 +10,26 @@ import { ToastContainer, toast } from 'react-toastify';
 
 const Home = ()=> {
   let history = useHistory();
+  const logout = ()=>{
+    localStorage.removeItem("accessToken");
+    toast.success("Logout Successful !", {
+      position: toast.POSITION.TOP_RIGHT
+    });
+    
+    history.push("/login")
+  }
   if(!localStorage.getItem("accessToken")){
     history.push("/login");
-}
-const logout = ()=>{
-  localStorage.removeItem("accessToken");
-  toast.success("Logout Successful !", {
-    position: toast.POSITION.TOP_RIGHT
-  });
-  
-  history.push("/login")
+    return "Hello"
 }
 
 
+else{
 
   var token = JSON.parse(localStorage.getItem('accessToken'));
 var decoded = jwt_decode(token);
 console.log(decoded);
+
     
         return (
         <div>
@@ -47,7 +50,7 @@ console.log(decoded);
             </header>
         </div>
   )
-
+        }
 }
 
 export default Home;

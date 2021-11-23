@@ -16,7 +16,7 @@ class Hub extends Component {
     render() {
         return (
             <div>
-                <Nav name="HUB"/>
+                <Nav name="Home"/>
                 {/* <NavSearch /> */}
         <div className="Main">
           <div className="Hub-CardArea">

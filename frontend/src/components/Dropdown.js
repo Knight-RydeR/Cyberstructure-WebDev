@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Dropdown = (props) => {
+export const Dropdown = ({itemsArray}) => {
     return (
         <div>
             <div className="dropdown">
@@ -8,9 +8,12 @@ export const Dropdown = (props) => {
                     Choose your component
                 </button>
                 <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a className="dropdown-item" >Action</a>
-                    <a className="dropdown-item" >Another action</a>
-                    <a className="dropdown-item" >Something else here</a>
+
+                    {itemsArray.map(item=>{
+                        return( <a className="dropdown-item" >{item.name}</a>)
+                   }
+                    )};
+                    
                 </div>
                 </div>
         </div>

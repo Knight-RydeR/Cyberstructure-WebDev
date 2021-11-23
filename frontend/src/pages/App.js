@@ -20,6 +20,7 @@ import MakeBuild from "./makeBuild";
 // import Community from "./community";
 import UserProfile from "./userProfile";
 import axios from 'axios';
+import Products from './products';
 // import CheckBuild from "./checkBuild";
 
 function App() {
@@ -49,7 +50,8 @@ function App() {
         {/* <Route path="/consumption" component={Consumption}/>
         <Route path="/bestPrice" component={BestPrice}/>
         <Route path="/community" component={Community}/> */}
-      <Route path="/userProfile"  exact> <UserProfile/></Route>        {/* <Route path="/checkBuild" component={CheckBuild}/> */}
+      <Route path="/userProfile"  exact> <UserProfile/></Route>
+      <Route path="/products"  exact> <Products/></Route>         {/* <Route path="/checkBuild" component={CheckBuild}/> */}
       
    
     </main>
