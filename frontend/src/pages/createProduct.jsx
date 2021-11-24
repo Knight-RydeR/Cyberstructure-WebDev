@@ -9,7 +9,7 @@ import Nav from '../components/navbar/Navbar'
 import Drop from '../components/DropdownHUB'
 
 
-class Compatibility extends Component {
+class CreateProduct extends Component {
     render() {
         return (
             <div>
@@ -35,4 +35,4 @@ class Compatibility extends Component {
     }
 }
 
-export default Compatibility;
+export default CreateProduct;

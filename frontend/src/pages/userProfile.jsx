@@ -8,7 +8,7 @@ import { useHistory } from 'react-router';
 
 import { ToastContainer, toast } from 'react-toastify';
 
-const Home = ()=> {
+const UserProfile = ()=> {
   let history = useHistory();
   const logout = ()=>{
     localStorage.removeItem("accessToken");
@@ -33,7 +33,7 @@ console.log(decoded);
     
         return (
         <div>
-            <Nav name="HUB"/>
+            <Nav name="Profile"/>
             <header className="App-header">
               <h1>CyberStructure - User Profile</h1>
               <img src={logo} /*className="App-logo"*/ alt="logo" />
@@ -53,4 +53,4 @@ console.log(decoded);
         }
 }
 
-export default Home;
+export default UserProfile;

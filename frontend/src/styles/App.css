@@ -17,6 +17,29 @@
   }
 }
 
+.compatDrop {
+  display: flex;
+  justify-content: center;    
+  padding-top: 1.5rem;
+}
+
+.navImage {
+  height: 46px;
+  display: flex;
+  position: absolute;
+  right: 1%;
+}
+
+.AboutPage {
+  display: grid;
+  /* grid-template-columns: repeat(2, 201fr); */
+  grid-template-rows: 5fr;
+  margin: 55px auto;
+  width: 60%;
+  justify-items: center;
+  grid-row-gap: 6rem;
+}
+
 .HeadingSpaced {
   color: #ffffff;
   padding-left: 1rem;

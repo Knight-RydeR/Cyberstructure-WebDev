@@ -9,6 +9,7 @@ const cors =require('cors');
 let rT = require('./routes/defaultRoutes.js');
 let auth = require('./routes/authRoutes');
 let admin = require('./routes/adminRoutes')
+var pathfinderUI = require('pathfinder-ui')
 
 console.log(db);
 
@@ -46,3 +47,8 @@ const PORT = 1639;
 app.listen(PORT,()=>{
     console.log(`App is live at port ${PORT}`);
 })
+
+app.use('/pathfinder', function(req, res, next){
+    pathfinderUI(app)
+    next()
+}, pathfinderUI.router)

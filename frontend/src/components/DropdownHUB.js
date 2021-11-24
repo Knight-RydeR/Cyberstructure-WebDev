@@ -1,11 +1,11 @@
 import React from 'react'
 
-export const DropdownHUB = ({itemsArray}) => {
+export const DropdownHUB = (props) => {
     return (
         <div>
             <div className="dropdown">
                 <button className="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Navigate
+                    {props.name}
                 </button>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="/products">Products</a>

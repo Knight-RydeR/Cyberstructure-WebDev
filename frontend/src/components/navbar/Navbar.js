@@ -3,6 +3,7 @@ import React from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
 import Drop from "../DropdownHUB"
+import logo from '../../images/ssss.png';
 
 const Navbar = (props) => {
   return (
@@ -13,18 +14,21 @@ const Navbar = (props) => {
             </div>
           <div className="navbar-nav mr-auto">
             <li className="nav-item">
-              <Drop />
+              <Drop name="Navigate"/>
               </li>
-            <li className="nav-item">
+            <li className="nav-item navImage" style={{right:"8%"}}>
               <Link to={"/signup"} className="nav-link">
                 Register
               </Link>
             </li>
 
-            <li className="nav-item">
+            <li className="nav-item navImage" style={{right:"4.5%"}}>
               <Link to={"/login"} className="nav-link">
                 Login
               </Link>
+            </li>
+            <li className="nav-item">
+            <img className="navImage" src={logo} /*className="App-logo"*/ alt="logo" />
             </li>
           </div>
         </nav>

@@ -18,6 +18,7 @@
     "mongodb": "^3.5.9",
     "mongoose": "^5.9.21",
     "nodemon": "^2.0.14",
+    "pathfinder-ui": "^1.0.3",
     "rootpath": "^0.1.2"
   }
 }

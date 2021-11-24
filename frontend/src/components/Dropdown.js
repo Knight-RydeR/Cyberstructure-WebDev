@@ -9,7 +9,7 @@ export const Dropdown = ({itemsArray}) => {
                 </button>
                 <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
 
-                    {itemsArray.map(item=>{
+                    {itemsArray && itemsArray.map(item=>{
                         return( <a className="dropdown-item" >{item.name}</a>)
                    }
                     )};
