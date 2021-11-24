@@ -2,7 +2,7 @@ import React from 'react'
 
 import '../styles/App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
-// import "bootstrap/dist/js/bootstrap.bundle";
+import "bootstrap/dist/js/bootstrap.bundle";
 
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -12,7 +12,7 @@ import Hub from "./hub";
 import About from "./about";
 import Login from "./login"
 import Register from "./signup";
-// import CreateProduct from "./createProduct";
+import CreateProduct from "./createProduct";
 // import Products from "./products";
 import MakeBuild from "./makeBuild";
 import Compat from "./compat";
@@ -41,11 +41,11 @@ function App() {
      
      <ToastContainer />
      <Route path="/"  exact> <Home/></Route>
-     <Route path="/"  exact> <Home/></Route>
+     <Route path="/home"  exact> <Home/></Route>
      <Route path="/hub"  exact> <Hub/></Route>
      <Route path="/login"  exact> <Login/></Route>
      <Route path="/signup"  exact> <Register/></Route>
-     {/* <Route path="/createProduct" exact> <CreateProduct/></Route> */}
+     <Route path="/createProduct" exact> <CreateProduct/></Route>
         {/* <Route path="/products" component={Products}/> */}
         <Route path="/MakeBuild"  exact> <MakeBuild/></Route>
         <Route path="/compat" component={Compat}/>

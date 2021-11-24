@@ -1,9 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import logo1 from '../images/about.png';
-import logo2 from '../images/best.jpg';
-import logo3 from '../images/comp.jpg';
-import logo4 from '../images/cons.jpg';
-import logo5 from '../images/makeA.jpg';
 import logo6 from '../images/pro.jpg';
 import { authAxios } from './axiosInstances';
 
