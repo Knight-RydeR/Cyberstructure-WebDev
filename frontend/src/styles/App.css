@@ -79,6 +79,17 @@
   grid-row-gap: 6rem;
 }
 
+.Product-CardArea {
+  display: grid;
+  grid-template-columns: repeat(4, 250fr);
+  grid-template-rows: 5fr;
+  margin: 55px auto;
+  width: 95%;
+  grid-row-gap: 2rem;
+  grid-column-gap: 1rem;
+  justify-items: center;
+}
+
 .Hub-Card {
  align-content: center;
 } 

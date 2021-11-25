@@ -3,6 +3,7 @@ import logo6 from '../images/sim.png';
 import logo4 from '../images/follow.png';
 import { useHistory } from 'react-router-dom';
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
 
 import '../styles/App.css';
 import ActionCard from '../components/ActionAreaCard'
@@ -13,38 +14,40 @@ import Drop from '../components/DropdownHUB'
 
 const CreateProduct = () => {
     let [username, setUsername] = useState("");
-    let [password, setPassword] = useState("");
+    let [price, setPrice] = useState("");
+    let [category, setCategory] = useState("");
     let history = useHistory();
-    // if (localStorage.getItem('accessToken')) history.push('/userProfile');
-    // let baseUrl = 'http://localhost:1639/api';
-    // let defaultReq = axios.create({
-    //     baseURL: baseUrl,
-    // });
+    if (localStorage.getItem('accessToken')) history.push('/createProduct');
+    else history.push('/login')
+    let baseUrl = 'http://localhost:1639/api/auth';
+    let defaultReq = axios.create({
+        baseURL: baseUrl,
+    });
 
-    const login = (e) => {
+    const create = (e) => {
         e.preventDefault();
-        // defaultReq.post('/login', {
-        // username, password
-        // }).then(response => {
+        defaultReq.post('/createProduct', {
+        username, price, category
+        }).then(response => {
 
-        //     if (response.status == 200) {
-        //         toast.success("Login Successful !", {
-        //             position: toast.POSITION.TOP_RIGHT
-        //         });
+            if (response.status == 200) {
+                toast.success("Entry Successful!", {
+                    position: toast.POSITION.TOP_RIGHT
+                });
 
         //         localStorage.setItem('accessToken', JSON.stringify(response.data.data))
-        //         history.push('/userProfile');
+                history.push('/createProduct');
 
-        //     }
-        //     else {
-        //         console.log(response)
-        //     }
-        // })
-        //     .catch(err => {
-        //         toast.error(`Login Failed !,error is ${err}`, {
-        //             position: toast.POSITION.TOP_RIGHT
-        //         });
-        //     });
+            }
+            else {
+                console.log(response)
+            }
+        })
+            .catch(err => {
+                toast.error(`Login Failed !,error is ${err}`, {
+                    position: toast.POSITION.TOP_RIGHT
+                });
+            });
     }
 
     return (
@@ -55,10 +58,10 @@ const CreateProduct = () => {
                     <div>
                         <h1 style={{ color: "white" }}>Select Product to Add</h1>
                         <div className="compatDrop mb-3">
-                            <Drop name="Select Component" type="createProduct" />
+                            <Drop name="Select Category" type="createProduct" onChange={event => setCategory()}/>
                         </div>
                         <div className="AppLogin">
-                            <form onSubmit={login}>
+                            <form onSubmit={create}>
                                 <div>
                                     <div className="mb-3">
                                         <label for="Username" class="form-label mb-3" style={{color: "white"}} >Name</label>
@@ -67,18 +70,18 @@ const CreateProduct = () => {
 
                                     <div className="mb-3">
                                         <label for="Username" class="form-label mb-3" style={{color: "white"}}>Price</label>
-                                        <input type="text" class="form-control" id="Username" placeholder="Enter Product Price here" value={username} onChange={event => setUsername(event.target.value)} />
+                                        <input type="text" class="form-control" id="Username" placeholder="Enter Product Price here" value={price} onChange={event => setPrice(event.target.value)} />
                                     </div>
 
-                                    <div className="mb-3">
+                                    {/* <div className="mb-3">
                                         <label for="Username" class="form-label mb-3" style={{color: "white"}}>Username</label>
                                         <input type="text" class="form-control" id="Username" placeholder="Enter Product here" value={username} onChange={event => setUsername(event.target.value)} />
-                                    </div>
+                                    </div> */}
 
-                                    <div className="mb-3">
+                                    {/* <div className="mb-3">
                                         <label for="Username" class="form-label mb-3" style={{color: "white"}}>Username</label>
                                         <input type="text" class="form-control" id="Username" placeholder="Enter Product here" value={username} onChange={event => setUsername(event.target.value)} />
-                                    </div>
+                                    </div> */}
 
                                     <div className="mb-4">
                                         <h3 style={{color: "gold"}}>Add image entry point here</h3>

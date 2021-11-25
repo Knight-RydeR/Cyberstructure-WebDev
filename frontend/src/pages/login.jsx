@@ -43,6 +43,7 @@ const Login =  ()=> {
 
 
                   localStorage.setItem('accessToken',JSON.stringify(response.data.data))
+                  localStorage.setItem('loggedIn',"1")
                  history.push('/userProfile');
 
               
@@ -54,7 +55,7 @@ const Login =  ()=> {
          })
          .catch(err=>{
              
-             toast.error(`Login Failed !,error is ${err}`, {
+             toast.error(`Login Failed! Error is ${err}`, {
                 position: toast.POSITION.TOP_RIGHT
               });
          });
@@ -74,18 +75,18 @@ const Login =  ()=> {
                 <form onSubmit={login}>
                     <div>
                         <div className="mb-3">
-                            <label for="Username" class="form-label mb-3">Username</label>
-                            <input type="text" class="form-control" id="Username" placeholder="Enter your Username here"  value={username} onChange={event=>setUsername(event.target.value)}/>
+                            <label htmlFor="Username" className="form-label mb-3">Username</label>
+                            <input type="text" className="form-control" id="Username" placeholder="Enter your Username here"  value={username} onChange={event=>setUsername(event.target.value)}/>
                         </div>
                             <div className="mb-5">
-                                <label for="exampleInputPassword1" class="form-label mb-3">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter your password here" value = {password} onChange={event=>setPassword(event.target.value)}/>
+                                <label htmlFor="exampleInputPassword1" className="form-label mb-3">Password</label>
+                                <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Enter your password here" value = {password} onChange={event=>setPassword(event.target.value)}/>
                             </div>
                     </div>
                         <div>
-                            <button type="submit" class="btn btn-warning mb-4" >Login</button>
+                            <button type="submit" className="btn btn-warning mb-4" >Login</button>
                             <h5 className="mb-4" style={{color: "white"}}>Not registered?</h5>
-                            <a class="btn btn-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Click here to register now!" href="/signup" role="button">Sign-up.</a>
+                            <a className="btn btn-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Click here to register now!" href="/signup" role="button">Sign-up.</a>
                         </div>
                 </form>
                 </div>

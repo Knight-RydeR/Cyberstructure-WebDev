@@ -1,24 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export const DropdownHUB = (props) => {
-    if (props.type == "createProduct")
-    {
+    const [categoryName, setCategory] = useState("");
+    if (props.type == "createProduct") {
         return (
             <div>
-                    <div className="dropdown">
-                    <button className="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div>
+                    {/* <button className="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {props.name}
-                    </button>
-                    <div className="dropdown-menu">
-                        <a className="dropdown-item" >Motherboard</a>
-                        <a className="dropdown-item" >Processor</a>
-                        <a className="dropdown-item" >RAM</a>
-                        <a className="dropdown-item" >Power Supply</a>
-                        <a className="dropdown-item" >Storage</a>
-                        <a className="dropdown-item" >Graphic Card</a>
-                        <a className="dropdown-item" >Cooler</a>
-                        <a className="dropdown-item" >Fans</a>
-                        <a className="dropdown-item" >Casing</a>
+                    </button> */}
+                    <div className="dropdown">
+                        <select
+                            value={categoryName}
+                            onChange={(e)=>setCategory(e.target.value)}
+                        >
+                            <option className="dropdown-item" value="Motherboard">Motherboard</option >
+                            <option className="dropdown-item" value="Processor">Processor</option >
+                            <option className="dropdown-item" value="RAM">RAM</option >
+                            <option className="dropdown-item" value="Power Supply">Power Supply</option >
+                            <option className="dropdown-item" value="Storage">Storage</option >
+                            <option className="dropdown-item" value="Graphic Card">Graphic Card</option >
+                            <option className="dropdown-item" value="Cooler">Cooler</option >
+                            <option className="dropdown-item" value="Fans">Fans</option >
+                            <option className="dropdown-item" value="Casing">Casing</option >
+                        </select>
                     </div>
                 </div>
             </div>
@@ -27,7 +32,7 @@ export const DropdownHUB = (props) => {
     else {
         return (
             <div>
-                    <div className="dropdown">
+                <div className="dropdown">
                     <button className="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {props.name}
                     </button>
@@ -45,7 +50,7 @@ export const DropdownHUB = (props) => {
             </div>
         )
     }
-    
+
 }
 
 export default DropdownHUB;

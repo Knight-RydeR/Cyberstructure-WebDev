@@ -46,9 +46,8 @@ function App() {
      <Route path="/login"  exact> <Login/></Route>
      <Route path="/signup"  exact> <Register/></Route>
      <Route path="/createProduct" exact> <CreateProduct/></Route>
-        {/* <Route path="/products" component={Products}/> */}
-        <Route path="/MakeBuild"  exact> <MakeBuild/></Route>
-        <Route path="/compat" component={Compat}/>
+      <Route path="/MakeBuild"  exact> <MakeBuild/></Route>
+      <Route path="/compat" component={Compat}/>
         {/* <Route path="/consumption" component={Consumption}/>
         <Route path="/bestPrice" component={BestPrice}/>
         <Route path="/community" component={Community}/> */}

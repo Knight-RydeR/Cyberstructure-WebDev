@@ -10,22 +10,30 @@ import { ToastContainer, toast } from 'react-toastify';
 
 const UserProfile = ()=> {
   let history = useHistory();
+  let accessToken = localStorage.getItem("accessToken");
+  console.log(accessToken);
   const logout = ()=>{
     localStorage.removeItem("accessToken");
+    localStorage.removeItem("loggedIn");
     toast.success("Logout Successful !", {
       position: toast.POSITION.TOP_RIGHT
     });
     
     history.push("/login")
   }
-  if(!localStorage.getItem("accessToken")){
+  if(!accessToken){
+
     history.push("/login");
     return "Hello"
 }
+else if (accessToken==="undefined")
+{
+  history.push("/login");
+  return "YOU GOT CAUGHT";
 
-
+}
 else{
-
+  console.log("mohmadbey")
   var token = JSON.parse(localStorage.getItem('accessToken'));
 var decoded = jwt_decode(token);
 console.log(decoded);
@@ -37,15 +45,15 @@ console.log(decoded);
             <header className="App-header">
               <h1>CyberStructure - User Profile</h1>
               <img src={logo} /*className="App-logo"*/ alt="logo" />
-              <p>
+              <h2 className="mb-4">
                Logged in as {decoded.nick}
-              </p>
-                   <p  style={{color: "white"}} className="mb-4">Logout?</p>
-              <button className="btn btn-warning" onClick={logout}>Logout</button>
+              </h2>
+                   {/* <p  style={{color: "white"}} className="mb-4">Logout?</p>
+              <button className="btn btn-warning" onClick={logout}>Logout</button> */}
               <p  style={{color: "white"}} className="mb-4">Check community builds?</p>
               <a class="btn btn-warning mb-3" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Click here to register now!" href="/community" role="button">Community</a>
               <p  style={{color: "white"}} className="mb-4">Check your builds?</p>
-              <a class="btn btn-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Click here to register now!" href="/checkBuild" role="button">My Builds</a>
+              <a class="btn btn-warning mb-4" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Click here to register now!" href="/checkBuild" role="button">My Builds</a>
          
             </header>
         </div>
