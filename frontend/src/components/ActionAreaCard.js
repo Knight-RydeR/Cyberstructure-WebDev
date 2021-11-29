@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 
 export default function ActionAreaCard(props) {
-  return (
+  return (props.cardTrigger) ? (
     <Card sx={{ width: 345 }}>
       <CardActionArea>
         <CardMedia
@@ -25,5 +25,5 @@ export default function ActionAreaCard(props) {
         </CardContent>
       </CardActionArea>
     </Card>
-  );
+  ) : "";
 }

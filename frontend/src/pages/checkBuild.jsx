@@ -9,8 +9,8 @@ import Nav from '../components/navbar/Navbar'
 import Drop from '../components/DropdownHUB'
 
 
-class CheckBuild extends Component {
-    render() {
+const CheckBuild = () => {
+
         return (
             <div>
                 <Nav name="Check Build" />
@@ -19,7 +19,6 @@ class CheckBuild extends Component {
                 </div>
             </div>
         )
-    }
 }
 
 export default CheckBuild;

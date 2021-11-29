@@ -5,7 +5,11 @@ function Popup(props) {
     return (props.trigger) ? (
         <div className="popup">
             <div className="popup-inner">
-                <button className="close-btn" onClick={() => props.setTrigger(false)}>close</button>
+                <button className="close-btn" onClick={() => {
+                    props.setTrigger(false)
+                    props.setCard(true)}
+                }
+                >close</button>
                 <div>
                     <h3>{props.category}</h3>
                     <br></br> 

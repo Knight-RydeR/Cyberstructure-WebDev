@@ -12,6 +12,7 @@ import Drop from '../components/DropdownHUB'
 const Consumption = () => {
 
     let [category, setCategory] = useState("");
+    const [cardInvis, setCardInvis] = useState(true);
 
     return (
         <div>

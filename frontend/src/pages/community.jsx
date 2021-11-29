@@ -9,8 +9,8 @@ import Nav from '../components/navbar/Navbar'
 import Drop from '../components/DropdownHUB'
 
 
-class Community extends Component {
-    render() {
+const Community = () => {
+
         return (
             <div>
                 <Nav name="Community" />
@@ -19,7 +19,6 @@ class Community extends Component {
                 </div>
             </div>
         )
-    }
 }
 
 export default Community;

@@ -16,6 +16,7 @@ const CreateProduct = () => {
     let [username, setUsername] = useState("");
     let [price, setPrice] = useState("");
     let [category, setCategory] = useState("");
+    let [power, setPower] = useState("");
     let history = useHistory();
     if (localStorage.getItem('accessToken')) history.push('/createProduct');
     else history.push('/login')
@@ -28,6 +29,7 @@ const CreateProduct = () => {
             nameOfProduct:username,
             price,
             category,
+            power,
             imageUrl:"hello"
           }).then(response => {
 
@@ -72,6 +74,11 @@ const CreateProduct = () => {
                                     <div className="mb-3">
                                         <label for="Username" class="form-label mb-3" style={{color: "white"}}>Price</label>
                                         <input type="text" class="form-control" id="Username" placeholder="Enter Product Price here" value={price} onChange={event => setPrice(event.target.value)} />
+                                    </div>
+
+                                    <div className="mb-3">
+                                        <label for="Username" class="form-label mb-3" style={{color: "white"}}>Power rating</label>
+                                        <input type="text" class="form-control" id="Username" placeholder="Enter Product Price here" value={power} onChange={event => setPower(event.target.value)} />
                                     </div>
 
                                     {/* <div className="mb-3">

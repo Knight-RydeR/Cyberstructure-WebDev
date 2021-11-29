@@ -21,12 +21,10 @@ import Drop from '../components/Dropdown'
 
 const MakeBuild = ()=> {
 
-        useEffect( ()=>{
+    const [cardInvis, setCardInvis] = useState(true);
+        // useEffect( ()=>{
         
-
-
-
-        },[])
+        // },[])
    
         return (
             <div>
@@ -35,32 +33,32 @@ const MakeBuild = ()=> {
         <div className="Main">
           <div className="Hub-CardArea">
             <div>
-                    <ActionCard name="Motherboard" description="Choose your motherboard." source={logo7}/>
+                    <ActionCard name="Motherboard" description="Choose your motherboard." source={logo7} cardTrigger={cardInvis} setTrigger={setCardInvis}/>
                     <Drop />
             </div>
             <div>
-                    <ActionCard name="Processor" description="Choose your processor." source={logo4}/>
+                    <ActionCard name="Processor" description="Choose your processor." source={logo4} cardTrigger={cardInvis} setTrigger={setCardInvis}/>
                     <Drop />
             </div><div>
-                    <ActionCard name="RAM" description="Choose your RAM." source={logo9}/>
+                    <ActionCard name="RAM" description="Choose your RAM." source={logo9} cardTrigger={cardInvis} setTrigger={setCardInvis}/>
                     <Drop />
             </div><div>
-                    <ActionCard name="Power Supply" description="Choose your Power Supply." source={logo8}/>
+                    <ActionCard name="Power Supply" description="Choose your Power Supply." source={logo8} cardTrigger={cardInvis} setTrigger={setCardInvis}/>
                     <Drop />
             </div><div>
-                    <ActionCard name="Storage" description="Choose your Storage device." source={logo10}/>
+                    <ActionCard name="Storage" description="Choose your Storage device." source={logo10} cardTrigger={cardInvis} setTrigger={setCardInvis}/>
                     <Drop />
             </div><div>
-                    <ActionCard name="Graphic Card" description="Choose your Graphic card." source={logo6}/>
+                    <ActionCard name="Graphic Card" description="Choose your Graphic card." source={logo6} cardTrigger={cardInvis} setTrigger={setCardInvis}/>
                     <Drop />
             </div><div>
-                    <ActionCard name="Cooler" description="Choose your Cooler." source={logo3}/>
+                    <ActionCard name="Cooler" description="Choose your Cooler." source={logo3} cardTrigger={cardInvis} setTrigger={setCardInvis}/>
                     <Drop />
             </div><div>
-                    <ActionCard name="Fans" description="Choose your Fans." source={logo5}/>
+                    <ActionCard name="Fans" description="Choose your Fans." source={logo5} cardTrigger={cardInvis} setTrigger={setCardInvis}/>
                     <Drop />
             </div><div>
-                    <ActionCard name="Casing" description="Choose your Casing." source={logo2}/>
+                    <ActionCard name="Casing" description="Choose your Casing." source={logo2} cardTrigger={cardInvis} setTrigger={setCardInvis}/>
                     <Drop />
             </div>
           </div>

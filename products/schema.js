@@ -23,6 +23,11 @@ let productSchema = new mongoose.Schema({
         required:true,
         minLength:2,
     },
+    power:{
+        type:Number,
+        required:true,
+        minLength:2,
+    },
     imageUrl:String
 }, {_id:false});
 

@@ -13,6 +13,7 @@ import { useParams } from 'react-router';
 const Products = () => {
     const [product, setProduct] = useState([]);
     const [buttonPopup, setButtonPopup] = useState(false);
+    const [cardInvis, setCardInvis] = useState(true);
     const [selectedItem, setSelectedItem] = useState(null);
     
     var productCategory = "";
@@ -50,19 +51,20 @@ const Products = () => {
     return (
         <div>
             <Nav name="Products" />
-            {selectedItem && <Popup trigger={buttonPopup} setTrigger={setButtonPopup} category={selectedItem.category} name={selectedItem.nameOfProduct} price={selectedItem.price}>
+            {selectedItem && <Popup trigger={buttonPopup} setTrigger={setButtonPopup} setCard={setCardInvis} category={selectedItem.category} name={selectedItem.nameOfProduct} price={selectedItem.price}>
             </Popup>}
-            <div className="Main" style={{}}>
+            <div className="Main">
                 <div className="Product-CardArea">
                     {
                         product.length > 0 && product.map(i => {
                             return (
                                 <div>
                                     {/* <Link to="/products" style={{textDecoration: "none"}}> */}
-                                        <ActionCard name={i.nameOfProduct} description="Data picked up from the database" source={logo6} />
+                                        <ActionCard name={i.nameOfProduct} description="Data picked up from the database" source={logo6} cardTrigger={cardInvis} setTrigger={setCardInvis}/>
                                         <button className="btn btn-warning" onClick={() => {
                                             setSelectedItem(i);
                                             setButtonPopup(true);
+                                            setCardInvis(false);
                                         }}>
                                             View details</button>
                                     {/* </Link> */}

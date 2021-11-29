@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import logo6 from '../images/sim.png';
 import logo4 from '../images/follow.png';
 
@@ -9,21 +9,22 @@ import Nav from '../components/navbar/Navbar'
 import Drop from '../components/DropdownHUB'
 
 
-class Compatibility extends Component {
-    render() {
+const Compatibility = () => {
+    const [cardInvis, setCardInvis] = useState(true);
+
         return (
             <div>
                 <Nav name="Compatibility" />
                 <div className="Main">
                     <div className="Hub-CardArea">
                         <div>
-                            <ActionCard name="Choose first component" source={logo6} />
+                            <ActionCard name="Choose first component" source={logo6} cardTrigger={cardInvis} setTrigger={setCardInvis}/>
                             <div className="compatDrop">
                                 <Drop name="Select Component"/>
                             </div>
                         </div>
                         <div>
-                            <ActionCard name="Choose second component" source={logo6} />
+                            <ActionCard name="Choose second component" source={logo6} cardTrigger={cardInvis} setTrigger={setCardInvis}/>
                             <div className="compatDrop">
                                 <Drop name="Select Component"/>
                             </div>
@@ -32,7 +33,6 @@ class Compatibility extends Component {
                 </div>
             </div>
         )
-    }
 }
 
 export default Compatibility;

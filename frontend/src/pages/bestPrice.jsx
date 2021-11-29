@@ -9,8 +9,8 @@ import Nav from '../components/navbar/Navbar'
 import Drop from '../components/DropdownHUB'
 
 
-class BestPrice extends Component {
-    render() {
+const BestPrice = () => {
+
         return (
             <div>
                 <Nav name="Best Price" />
@@ -19,7 +19,6 @@ class BestPrice extends Component {
                 </div>
             </div>
         )
-    }
 }
 
 export default BestPrice;
