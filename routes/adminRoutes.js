@@ -10,18 +10,21 @@ let router = express.Router();
 
 async function adminChecker(req, res, next) {
   console.log("here in Admin Middle Ware");
-
-  let claimedToken = req.headers["bearer"];
-  let decode = await jwt.verify(claimedToken, db.config.SECRET);
-  let exist = await user.findOne({ _id: decode.id }).lean();
-  if (exist) {
-    if (exist["isAdmin"] == true) {
+let extractedUser = res.locals.userInDb;
+console.log(extractedUser)
+  
+  if (extractedUser) {
+    if (extractedUser["isAdmin"] == true) {
       next();
     } else await res.json({ status: "error", data: "not admin" });
   } else await res.json({ status: "error", data: "not found" });
 }
 router.use(adminChecker);
 
+router.get("/check", async (req, res) => {
+  console.log(`here local,${JSON.stringify(res.locals.userInDb)}`);
+  res.status(200).json({data: "hello from admin" });
+});
 router.get("/isAdmin/:id", async (req, res) => {
   try {
     console.log("here in is");

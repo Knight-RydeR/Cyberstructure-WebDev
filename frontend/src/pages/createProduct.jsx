@@ -10,7 +10,7 @@ import ActionCard from '../components/ActionAreaCard'
 import { Link } from "react-router-dom";
 import Nav from '../components/navbar/Navbar'
 import Drop from '../components/DropdownHUB'
-
+import { authAxios } from './axiosInstances';
 
 const CreateProduct = () => {
     let [username, setUsername] = useState("");
@@ -19,16 +19,17 @@ const CreateProduct = () => {
     let history = useHistory();
     if (localStorage.getItem('accessToken')) history.push('/createProduct');
     else history.push('/login')
-    let baseUrl = 'http://localhost:1639/api/auth';
-    let defaultReq = axios.create({
-        baseURL: baseUrl,
-    });
+
+    console.log(category)
 
     const create = (e) => {
         e.preventDefault();
-        defaultReq.post('/createProduct', {
-        username, price, category
-        }).then(response => {
+        authAxios.post('/createProduct', {
+            nameOfProduct:username,
+            price,
+            category,
+            imageUrl:"hello"
+          }).then(response => {
 
             if (response.status == 200) {
                 toast.success("Entry Successful!", {
@@ -44,7 +45,7 @@ const CreateProduct = () => {
             }
         })
             .catch(err => {
-                toast.error(`Login Failed !,error is ${err}`, {
+                toast.error(`Product Creation Failed !,error is ${err}`, {
                     position: toast.POSITION.TOP_RIGHT
                 });
             });
@@ -58,7 +59,7 @@ const CreateProduct = () => {
                     <div>
                         <h1 style={{ color: "white" }}>Select Product to Add</h1>
                         <div className="compatDrop mb-3">
-                            <Drop name="Select Category" type="createProduct" onChange={event => setCategory()}/>
+                            <Drop name="Select Category" type="createProduct" changeC={setCategory} catVal={category} />
                         </div>
                         <div className="AppLogin">
                             <form onSubmit={create}>

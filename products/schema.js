@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 let productSchema = new mongoose.Schema({
     _id: {
         type:Number,
+        required:true,
       
     },
     nameOfProduct : {
@@ -20,7 +21,7 @@ let productSchema = new mongoose.Schema({
         type:String,
         lowercase:true,
         required:true,
-        minLength:5,
+        minLength:2,
     },
     imageUrl:String
 }, {_id:false});

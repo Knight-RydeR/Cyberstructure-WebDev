@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 
-export const DropdownHUB = (props) => {
-    const [categoryName, setCategory] = useState("");
-    if (props.type == "createProduct") {
+export const DropdownHUB = ({type,changeC,catVal,name}) => {
+    if (type == "createProduct") {
         return (
             <div>
                 <div>
@@ -11,9 +10,14 @@ export const DropdownHUB = (props) => {
                     </button> */}
                     <div className="dropdown">
                         <select
-                            value={categoryName}
-                            onChange={(e)=>setCategory(e.target.value)}
+                            value={catVal}
+                            onChange={(e)=>{
+                                console.log(e.target.value);
+                                changeC(e.target.value);
+                            }}
+                            
                         >
+                            <option className="dropdown-item" value="" selected disabled hidden >Choose here</option>
                             <option className="dropdown-item" value="Motherboard">Motherboard</option >
                             <option className="dropdown-item" value="Processor">Processor</option >
                             <option className="dropdown-item" value="RAM">RAM</option >
@@ -22,19 +26,24 @@ export const DropdownHUB = (props) => {
                             <option className="dropdown-item" value="Graphic Card">Graphic Card</option >
                             <option className="dropdown-item" value="Cooler">Cooler</option >
                             <option className="dropdown-item" value="Fans">Fans</option >
-                            <option className="dropdown-item" value="Casing">Casing</option >
+                            <option className="dropdown-item"  value="Casing">Casing</option >
                         </select>
                     </div>
                 </div>
             </div>
         )
     }
+
+    // else if () {
+
+    // }
+
     else {
         return (
             <div>
                 <div className="dropdown">
                     <button className="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {props.name}
+                        {name}
                     </button>
                     <div className="dropdown-menu">
                         <a className="dropdown-item" href="/products">Products</a>

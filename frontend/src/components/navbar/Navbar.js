@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
 import Drop from "../DropdownHUB"
 import logo from '../../images/ssss.png';
+import logoMini from '../../images/ss.png';
 import { ToastContainer, toast } from 'react-toastify';
 import { useHistory } from 'react-router';
 
@@ -16,7 +17,7 @@ const Navbar = (props) => {
       position: toast.POSITION.TOP_RIGHT
     });
 
-    history.push("/hub")
+    history.push("/")
   }
 
   if(localStorage.getItem("loggedIn") == "1")

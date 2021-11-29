@@ -32,7 +32,6 @@
 
 .AboutPage {
   display: grid;
-  /* grid-template-columns: repeat(2, 201fr); */
   grid-template-rows: 5fr;
   margin: 55px auto;
   width: 60%;
@@ -60,13 +59,9 @@
 
 .Main {
   background-color: #000000;
-  /* min-height: 100vh; */
   display: flex;
+  min-height: 95vh;
   flex-direction: row;
-  /* align-items: center; */
-  /* justify-content: center; */
-  /* font-size: calc(10px + 2vmin); */
-  /* color: #FFD700; */
 }
 
 .Hub-CardArea {

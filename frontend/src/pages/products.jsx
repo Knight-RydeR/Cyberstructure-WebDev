@@ -67,7 +67,6 @@ const Products = () => {
                                             View details</button>
                                     {/* </Link> */}
                                 </div>
-
                             );
                         })
                     }

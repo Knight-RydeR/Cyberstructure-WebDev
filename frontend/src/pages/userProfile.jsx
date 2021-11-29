@@ -15,7 +15,7 @@ const UserProfile = ()=> {
   const logout = ()=>{
     localStorage.removeItem("accessToken");
     localStorage.removeItem("loggedIn");
-    toast.success("Logout Successful !", {
+    toast.success("Logout Successful!", {
       position: toast.POSITION.TOP_RIGHT
     });
     
