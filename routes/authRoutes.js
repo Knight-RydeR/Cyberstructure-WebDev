@@ -16,7 +16,8 @@ async function jwtAuthenticator(req, res, next) {
   try {
     let claimedToken = req.headers['authorization'];
     console.log(claimedToken)
-    if(!claimedToken)await res.status(401).json({ data: "not logged in" });
+    if(!claimedToken|| undefined || null )await res.status(401).json({ data: "not logged in/invalid JWT" });
+    else{
     claimedToken = claimedToken.replace("Bearer ", "");
     console.log(claimedToken)
     let decode = await jwt.verify(claimedToken, db.config.SECRET);
@@ -28,6 +29,7 @@ async function jwtAuthenticator(req, res, next) {
     if (await exist) {
       next();
     } else await res.status(401).json({ data: "not logged in" });
+  }
   } catch (e) {
     console.log(e);
     res.status(401).json({  data: e });
@@ -112,6 +114,33 @@ router.patch("/updateProduct/:id", async (req, res) => {
             data:{
             old: await dbResponse,
             new : await dbResponseNew
+                }
+            }
+            );
+    
+
+    }
+    else res.status(404).json({ data: "not found" });
+
+
+  } catch (e) {
+    res.status(400).json({ data: e });
+  }
+});
+router.delete("/deleteProduct/:id", async (req, res) => {
+  try {
+    console.log("here in delete");
+    let id = req.params.id;
+
+    let dbResponse = await product.findByIdAndDelete(id);
+    console.log(dbResponse);
+
+
+    if(dbResponse) {
+        res.status(200).json(
+            {
+            data:{
+          message:"success"
                 }
             }
             );

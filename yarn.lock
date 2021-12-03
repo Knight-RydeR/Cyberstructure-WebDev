@@ -47,6 +47,18 @@
     "mime-types" "~2.1.24"
     "negotiator" "0.6.2"
 
+"angular-ui-router@^0.2.15":
+  "integrity" "sha1-Ha1wQVxz1wRv0uEw3wPWL7dGQ2A="
+  "resolved" "https://registry.npmjs.org/angular-ui-router/-/angular-ui-router-0.2.18.tgz"
+  "version" "0.2.18"
+  dependencies:
+    "angular" "^1.0.8"
+
+"angular@^1.0.8":
+  "integrity" "sha512-IauMOej2xEe7/7Ennahkbb5qd/HFADiNuLSESz9Q27inmi32zB0lnAsFeLEWcox3Gd1F6YhNd1CP7/9IukJ0Gw=="
+  "resolved" "https://registry.npmjs.org/angular/-/angular-1.8.2.tgz"
+  "version" "1.8.2"
+
 "ansi-align@^3.0.0":
   "integrity" "sha512-IOfwwBF5iczOjp/WeY4YxyjqAFMQoZufdQWDd19SEExbVLNXqvpzSJ/M7Za4/sCPmQ0+GRquoA7bGcINcxew6w=="
   "resolved" "https://registry.npmjs.org/ansi-align/-/ansi-align-3.0.1.tgz"
@@ -423,7 +435,7 @@
   "resolved" "https://registry.npmjs.org/express-unless/-/express-unless-1.0.0.tgz"
   "version" "1.0.0"
 
-"express@^4.17.1":
+"express@^4.13.0", "express@^4.17.1":
   "integrity" "sha512-mHJ9O79RqluphRrcw2X/GTh3k9tVv8YcoyY4Kkh4WDMUYKRZUq0h1o0w2rrrxBqM7VoeUVqgb27xlEMXTnYt4g=="
   "resolved" "https://registry.npmjs.org/express/-/express-4.17.1.tgz"
   "version" "4.17.1"
@@ -1041,6 +1053,14 @@
   "integrity" "sha1-32BBeABfUi8V60SQ5yR6G/qmf4w="
   "resolved" "https://registry.npmjs.org/path-to-regexp/-/path-to-regexp-0.1.7.tgz"
   "version" "0.1.7"
+
+"pathfinder-ui@^1.0.3":
+  "integrity" "sha1-zvb9v9Wybq83rMxAopm6no0dVsI="
+  "resolved" "https://registry.npmjs.org/pathfinder-ui/-/pathfinder-ui-1.0.3.tgz"
+  "version" "1.0.3"
+  dependencies:
+    "angular-ui-router" "^0.2.15"
+    "express" "^4.13.0"
 
 "picomatch@^2.0.4", "picomatch@^2.2.1":
   "integrity" "sha512-lY1Q/PiJGC2zOv/z391WOTD+Z02bCgsFfvxoXXf6h7kv9o+WmsmzYqrAwY63sNgOxE4xEdq0WyUnXfKeBrSvYw=="

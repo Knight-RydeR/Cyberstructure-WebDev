@@ -33,7 +33,7 @@ const MakeBuild = ()=> {
         <div className="Main">
           <div className="Hub-CardArea">
             <div>
-                    <ActionCard name="Motherboard" description="Choose your motherboard." source={logo7} cardTrigger={cardInvis} setTrigger={setCardInvis}/>
+                    <ActionCard name="Motherboard" description="Choose your motherboard." source={logo7} cardTrigger={cardInvis} setTrigger={()=>setCardInvis(true)}/>
                     <Drop />
             </div>
             <div>
