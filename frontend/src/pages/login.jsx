@@ -41,6 +41,7 @@ const Login =  ()=> {
                   });
                   
 
+                  if (username == 'Mohammad') localStorage.setItem('admin', '1');
 
                   localStorage.setItem('accessToken',JSON.stringify(response.data.data))
                   localStorage.setItem('loggedIn',"1")

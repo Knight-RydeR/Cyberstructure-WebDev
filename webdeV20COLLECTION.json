@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "496370ea-46d5-4d08-8229-6a28be04e385",
+		"_postman_id": "13f7b817-4e1c-402b-bfcc-f178414f8ba0",
 		"name": "WEBDEVAPI",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -80,7 +80,46 @@
 				"header": [
 					{
 						"key": "bearer",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxN2VkMzMzYjA3ODI3MDZjYzFhMGE5NiIsInVzZXJuYW1lIjoibW9oYW1tYWQiLCJuaWNrIjoiYmxvY2tjaGFpbmRldiIsImlhdCI6MTYzNTcwMTU3OSwiZXhwIjoxNjM1NzE1OTc5fQ.b47WzuJWl_vHSP--cfah-pp7wnvKwWv9eiEPQGDeZo4",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxOTI5MzU4OWVlOWIzNThiNDFjMzg4NCIsInVzZXJuYW1lIjoidGVzdCIsIm5pY2siOiJuaWNrIiwiaWF0IjoxNjM2OTk1OTQ1LCJleHAiOjE2MzcwMTAzNDV9.p3FDVFZ_ZW0gigNqEmeS2e0kd6sb9nPykXhjkAypUxA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1639/api/auth/check",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1639",
+					"path": [
+						"api",
+						"auth",
+						"check"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "check admin",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "bearer",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxOTI5MzU4OWVlOWIzNThiNDFjMzg4NCIsInVzZXJuYW1lIjoidGVzdCIsIm5pY2siOiJuaWNrIiwiaWF0IjoxNjM2OTk1OTQ1LCJleHAiOjE2MzcwMTAzNDV9.p3FDVFZ_ZW0gigNqEmeS2e0kd6sb9nPykXhjkAypUxA",
 						"type": "text"
 					}
 				],
@@ -140,6 +179,101 @@
 						"api",
 						"auth",
 						"createProduct"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createCategory",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYWU2MTllZDUxNDc4YTc3YjM2MjkyYyIsInVzZXJuYW1lIjoibmFiZWVsc3MiLCJuaWNrIjoicnVzdERldmVlIiwiaWF0IjoxNjM4ODE4MzI0LCJleHAiOjE2Mzg4MzI3MjR9.y5AgCHbBuSE1Fm2oj9GCHnk4UnSkCd6ANs76HXTwucw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n    \"nameOfCategory\":\"Motherboard\"\n  \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1639/api/auth/admin/createCategory",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1639",
+					"path": [
+						"api",
+						"auth",
+						"admin",
+						"createCategory"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete product",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYWU2MTllZDUxNDc4YTc3YjM2MjkyYyIsInVzZXJuYW1lIjoibmFiZWVsc3MiLCJuaWNrIjoicnVzdERldmVlIiwiaWF0IjoxNjM4ODE4MzI0LCJleHAiOjE2Mzg4MzI3MjR9.y5AgCHbBuSE1Fm2oj9GCHnk4UnSkCd6ANs76HXTwucw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n    \"nameOfCategory\":\"Motherboard\"\n  \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1639/api/auth/admin/createCategory",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1639",
+					"path": [
+						"api",
+						"auth",
+						"admin",
+						"createCategory"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllProducts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1639/api/search/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1639",
+					"path": [
+						"api",
+						"search",
+						"1"
 					]
 				}
 			},
@@ -226,6 +360,80 @@
 		},
 		{
 			"name": "updateProduct",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "bearer",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxN2VkMzMzYjA3ODI3MDZjYzFhMGE5NiIsInVzZXJuYW1lIjoibW9oYW1tYWQiLCJuaWNrIjoiYmxvY2tjaGFpbmRldiIsImlhdCI6MTYzNTcwMTU3OSwiZXhwIjoxNjM1NzE1OTc5fQ.b47WzuJWl_vHSP--cfah-pp7wnvKwWv9eiEPQGDeZo4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"price\":3100}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1639/api/auth/updateProduct/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1639",
+					"path": [
+						"api",
+						"auth",
+						"updateProduct",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getALlUsers",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "bearer",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxN2VkMzMzYjA3ODI3MDZjYzFhMGE5NiIsInVzZXJuYW1lIjoibW9oYW1tYWQiLCJuaWNrIjoiYmxvY2tjaGFpbmRldiIsImlhdCI6MTYzNTcwMTU3OSwiZXhwIjoxNjM1NzE1OTc5fQ.b47WzuJWl_vHSP--cfah-pp7wnvKwWv9eiEPQGDeZo4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"price\":3100}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:1639/api/auth/updateProduct/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1639",
+					"path": [
+						"api",
+						"auth",
+						"updateProduct",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
 			"request": {
 				"method": "PUT",
 				"header": [

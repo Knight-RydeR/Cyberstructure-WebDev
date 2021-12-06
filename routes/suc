@@ -1,0 +1,19 @@
+
+//success
+res.status(200).json({ error : {
+      message : "no error",
+      code :"0"
+    },
+    data: response ?? "Something went wrong o.O"
+  
+  });
+
+
+//error
+  res.status(401).json({ error : {
+        message : e['name]'] ?? "Duplicate Account Rejected",
+        code :e.code ?? ""
+      },
+      data: ""
+    
+    });

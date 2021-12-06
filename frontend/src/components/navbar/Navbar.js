@@ -13,6 +13,7 @@ const Navbar = (props) => {
   const logout = () => {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("loggedIn");
+    localStorage.removeItem('admin');
     toast.success("Logout Successful!", {
       position: toast.POSITION.TOP_RIGHT
     });
@@ -29,8 +30,11 @@ const Navbar = (props) => {
             {props.name}
           </div>
           <div className="navbar-nav mr-auto">
-            <li className="nav-item">
+            <li className="nav-item ">
               <Drop name="Navigate" />
+            </li>
+            <li>
+            <input className="form-control" type="search" placeholder="Search" aria-label="Search"></input>
             </li>
             <li className="nav-item navImage" style={{ right: "5%" }}>
               <button className="btn btn-warning" onClick={logout}>Logout</button>

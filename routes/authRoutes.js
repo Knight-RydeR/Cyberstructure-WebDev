@@ -9,33 +9,37 @@ const product = require("../products/schema");
 let router = express.Router();
 
 async function jwtAuthenticator(req, res, next) {
-    console.log("here in jwt Middle Ware");
-    
- 
+  console.log("here in jwt Middle Ware");
 
   try {
-    let claimedToken = req.headers['authorization'];
-    console.log(claimedToken)
-    if(!claimedToken|| undefined || null )await res.status(401).json({ data: "not logged in/invalid JWT" });
-    else{
-    claimedToken = claimedToken.replace("Bearer ", "");
-    console.log(claimedToken)
-    let decode = await jwt.verify(claimedToken, db.config.SECRET);
-    let exist = await user.findOne({ _id: decode.id }).lean();
+    let claimedToken = req.headers["authorization"];
+    console.log(claimedToken);
+    if (!claimedToken || undefined || null)
+      throw 'jwt invalid';
+    else {
+      claimedToken = claimedToken.replace("Bearer ", "");
+      console.log(claimedToken);
+      let decode = await jwt.verify(claimedToken, db.config.SECRET);
+      let exist = await user.findOne({ _id: decode.id }).lean();
 
-    //send the route handler the db object retrieved
-    res.locals.userInDb = await exist;
+      //send the route handler the db object retrieved
+      res.locals.userInDb = await exist ?? "not found";
 
-    if (await exist) {
-      next();
-    } else await res.status(401).json({ data: "not logged in" });
-  }
+      if (await exist) {
+        next();
+      } else throw "not found/invalid JWT";
+    }
   } catch (e) {
     console.log(e);
-    res.status(401).json({  data: e });
+    res.status(401).json({
+      error: {
+        message: e ?? "Invalid JWT Failed",
+        code: e.code ?? "",
+      },
+      data: "",
+    });
   }
 }
-
 
 router.use(jwtAuthenticator);
 
@@ -43,7 +47,7 @@ router.use(jwtAuthenticator);
 
 router.post("/saveBuild", async (req, res) => {
   try {
-    const {
+    let {
       Processor,
       Motherboard,
       Ram,
@@ -52,9 +56,39 @@ router.post("/saveBuild", async (req, res) => {
       GPU,
       Cooler,
       Fans,
-      Case
+      Case,
     } = req.body;
-    let createBuild = await userBuild.create({
+    Fans = parseInt(Fans);
+    if (!Processor || typeof Processor !== "string") {
+      throw 'invalid power passed';
+    }
+    if (!Motherboard || typeof Motherboard !== "string") {
+      throw 'invalid Motherboard passed';
+    }
+    if (!Ram || typeof Ram !== "string") {
+      throw 'invalid Ram passed';
+    }
+    if (!PSU || typeof PSU !== "string") {
+      throw 'invalid PSU passed';
+    }
+    if (!Storage || typeof Storage !== "string") {
+      throw 'invalid Storage passed';
+    }
+    if (!GPU || typeof GPU !== "string") {
+      throw 'invalid GPU passed';
+    }
+    if (!Cooler || typeof Cooler !== "string") {
+      throw 'invalid Cooler passed';
+    }
+    if (!Fans || typeof Fans !== "number") {
+      console.log(typeof Fans);
+      throw 'invalid Fans passed';
+    }
+    if (!Case || typeof Case !== "string") {
+      throw 'invalid power passed';
+    }
+    
+    let response = await userBuild.create({
       userName: res.locals.userInDb["username"],
       Processor,
       Motherboard,
@@ -64,100 +98,48 @@ router.post("/saveBuild", async (req, res) => {
       GPU,
       Cooler,
       Fans,
-      Case
+      Case,
     });
 
-    console.log(`Build Created Successfully, ${createBuild}`);
+    if(response){
 
-    res.json({ status: "ok", data: await createBuild });
+    console.log(`Build Created Successfully, ${response}`);
+
+    res.status(200).json({
+      error: {
+        message: "no error",
+        code: "0",
+      },
+      data: response ?? "Something went wrong o.O",
+    });
+  }
+  else {throw 'build failed'; }
   } catch (e) {
-    await res.json({ status: "error", data: e });
+    console.log(`here is catch ${e}`);
+   return res.status(401).json({  
+      error: {
+        message: e?? "Build Creation failed",
+        code: e.code ?? "",
+      },
+      data: "", 
+    });
   }
 });
 
-router.post("/createProduct", async (req, res) => {
-  try {
-    let count = await product.countDocuments({}) +1;
-    console.log(`count is ${count} `);
-    //create middleware for index
-    console.log(req.body);
-    const newProduct = ({
-      nameOfProduct,
-      price,
-      category,
-      imageUrl
-    } = req.body);
-
-    if (!imageUrl) newProduct["imageUrl"] = "";
-
-    let createProduct = await product.create({...newProduct,_id:count });
-    console.log(`Product Created Successfully, ${await JSON.stringify(createProduct,null,2)}`);
-    res.json({ status: "ok", data: await createProduct });
-  } catch (e) {
-    console.log(e);
-    res.status(400).json({  data: e });
-  }
-});
-
-router.patch("/updateProduct/:id", async (req, res) => {
-  try {
-    let id = req.params.id;
-    let updatedProduct = req.body;
-    let dbResponse = await product.findOneAndUpdate({ _id: id },updatedProduct).lean();
-    let dbResponseNew = await product.find({_id:id}).lean();
-    console.log(`Old db Response is ${await JSON.stringify(dbResponse)}`);
-    console.log(`New db Response is ${await JSON.stringify(dbResponseNew)}`);
-
-    if(dbResponse) {
-        res.status(200).json(
-            {
-            data:{
-            old: await dbResponse,
-            new : await dbResponseNew
-                }
-            }
-            );
-    
-
-    }
-    else res.status(404).json({ data: "not found" });
+  
 
 
-  } catch (e) {
-    res.status(400).json({ data: e });
-  }
-});
-router.delete("/deleteProduct/:id", async (req, res) => {
-  try {
-    console.log("here in delete");
-    let id = req.params.id;
 
-    let dbResponse = await product.findByIdAndDelete(id);
-    console.log(dbResponse);
-
-
-    if(dbResponse) {
-        res.status(200).json(
-            {
-            data:{
-          message:"success"
-                }
-            }
-            );
-    
-
-    }
-    else res.status(404).json({ data: "not found" });
-
-
-  } catch (e) {
-    res.status(400).json({ data: e });
-  }
-});
 
 router.get("/check", async (req, res) => {
   console.log(`here local,${JSON.stringify(res.locals.userInDb)}`);
-  res.json({ status: "ok", data: "hello" });
+  res.status(200).json({
+    error: {
+      message: "no error",
+      code: "0",
+    },
+    data: res.locals.userInDb ?? "Something went wrong o.O",
+  });
 });
 
 module.exports = router;

@@ -54,7 +54,6 @@ let userBuildSchema = new mongoose.Schema({
         type :Number,
         required:true,
         default:0,
-        max:5
     }
 });
 

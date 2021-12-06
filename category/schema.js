@@ -1,18 +1,18 @@
 const mongoose = require('mongoose');
 
 let categorySchema = new mongoose.Schema({
-    categoryId:{
+    _id: {
         type:Number,
         required:true,
-        unique:true
+      
     },
     nameOfCategory:{
         type:String,
         required:true,
         unique:true,
-        minLength:4
+        minLength:3
     }
-});
+}, {_id:false});
 
 let categoryModel = mongoose.model("categoryModel",categorySchema);
 
