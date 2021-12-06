@@ -48,36 +48,73 @@ const Products = () => {
         }).catch(error => console.log(error))
 
     }, [])
-    return (
-        <div>
-            <Nav name="Products" />
-            {selectedItem && <Popup trigger={buttonPopup} setTrigger={setButtonPopup} setCard={setCardInvis} category={selectedItem.category} name={selectedItem.nameOfProduct} price={selectedItem.price}>
-            </Popup>}
-            <div className="Main">
-                <div className="Product-CardArea">
-                    {
-                        product.length > 0 && product.map(i => {
-                            return (
-                                <div>
-                                    {/* <Link to="/products" style={{textDecoration: "none"}}> */}
-                                        <ActionCard name={i.nameOfProduct} description="Data picked up from the database" source={logo6} cardTrigger={cardInvis} setTrigger={setCardInvis}/>
-                                        <button className="btn btn-warning" onClick={() => {
-                                            setSelectedItem(i);
-                                            setButtonPopup(true);
-                                            setCardInvis(false);
-                                        }}>
-                                            View details</button>
-                                    {/* </Link> */}
-                                </div>
-                            );
-                        })
-                    }
 
-
+    if (localStorage.getItem('admin') == '1') {
+        return (
+            <div>
+                <Nav name="Products" />
+                {selectedItem && <Popup trigger={buttonPopup} setTrigger={setButtonPopup} setCard={setCardInvis} category={selectedItem.category} name={selectedItem.nameOfProduct} price={selectedItem.price}>
+                </Popup>}
+                <div className="Main">
+                    <div className="Product-CardArea">
+                        {
+                            product.length > 0 && product.map(i => {
+                                return (
+                                    <div>
+                                        {/* <Link to="/products" style={{textDecoration: "none"}}> */}
+                                            <ActionCard name={i.nameOfProduct} description="Data picked up from the database" source={logo6} cardTrigger={cardInvis} setTrigger={setCardInvis}/>
+                                            <button className="btn btn-warning" onClick={() => {
+                                                setSelectedItem(i);
+                                                setButtonPopup(true);
+                                                setCardInvis(false);
+                                            }}>
+                                                View details</button>
+                                            <button className="btn btn-danger">Remove</button>
+                                            <button className="btn btn-info">Modify item detail</button>
+                                        {/* </Link> */}
+                                    </div>
+                                );
+                            })
+                        }
+    
+    
+                    </div>
                 </div>
             </div>
-        </div>
-    )
+        )
+    } else {
+        return (
+            <div>
+                <Nav name="Products" />
+                {selectedItem && <Popup trigger={buttonPopup} setTrigger={setButtonPopup} setCard={setCardInvis} category={selectedItem.category} name={selectedItem.nameOfProduct} price={selectedItem.price}>
+                </Popup>}
+                <div className="Main">
+                    <div className="Product-CardArea">
+                        {
+                            product.length > 0 && product.map(i => {
+                                return (
+                                    <div>
+                                        {/* <Link to="/products" style={{textDecoration: "none"}}> */}
+                                            <ActionCard name={i.nameOfProduct} description="Data picked up from the database" source={logo6} cardTrigger={cardInvis} setTrigger={setCardInvis}/>
+                                            <button className="btn btn-warning" onClick={() => {
+                                                setSelectedItem(i);
+                                                setButtonPopup(true);
+                                                setCardInvis(false);
+                                            }}>
+                                                View details</button>
+                                        {/* </Link> */}
+                                    </div>
+                                );
+                            })
+                        }
+    
+    
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
 }
 
 export default Products;
