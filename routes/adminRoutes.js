@@ -286,7 +286,7 @@ router.get("/getCategory/:catName", async (req, res) => {
     let nameOfCategory = req.params.catName;
     nameOfCategory.toLowerCase();
     console.log(nameOfCategory)
-  const response = await categoryModel.find({nameOfCategory}).lean();
+  const response = await categoryModel.findOne({nameOfCategory}).lean();
     console.log(await response);
   
   if (response)
