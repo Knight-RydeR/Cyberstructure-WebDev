@@ -46,7 +46,7 @@ router.post("/login", async (req, res) => {
     console.log(e);
     res.status(401).json({
       error: {
-        message: e?? "Invalid Login",
+        message: e ?? "Invalid Login",
         code: e.code ?? "",
       },
       data: "",
@@ -58,12 +58,12 @@ router.post("/register", async (req, res) => {
   console.log(req.body);
 
   //pre mongo checking
- 
+
   //mongo connection and creation
   try {
     const { username, password: plainTextPassword, nick } = req.body;
     if (!username || typeof username !== "string") {
-      throw 'username error';
+      throw "username error";
     }
     if (!plainTextPassword || typeof plainTextPassword !== "string") {
       throw "password error";
@@ -88,7 +88,7 @@ router.post("/register", async (req, res) => {
     console.log(`User created succesfully ${response}`);
   } catch (e) {
     console.log(`Error is  ${e}`);
-    if ((e.code == 11000)){
+    if (e.code == 11000) {
       return res.status(401).json({
         error: {
           message: "Duplicate Account Rejected",
@@ -110,10 +110,10 @@ router.post("/register", async (req, res) => {
 //search product by id, returns one product
 router.get("/product/:id", async (req, res) => {
   try {
-    let id = req.params.id;
-    let dbResponse = await product.findOne({ _id: id }).lean();
-    console.log(await dbResponse);
-    if (dbResponse) {
+    let id = parseInt(req.params.id);
+    let response = await product.findOne({ _id: id }).lean();
+    console.log(await response);
+    if (response) {
       res.status(200).json({
         error: {
           message: "no error",
@@ -130,32 +130,43 @@ router.get("/product/:id", async (req, res) => {
   }
 });
 //returns all products matching the category
-router.get("/product/category/:categoryName", async (req, res) => {
+router.get("/product", async (req, res) => {
   try {
-    let catName = req.params.categoryName.toLowerCase();
-    let response = await product.find({ category: catName }).lean();
-    if (response.length > 0) {
-      res.status(200).json({
+    
+
+    let dbResponse = await product.find(req.query).lean();
+    if (!(await dbResponse)) throw "failed to get products";
+    console.log(await dbResponse);
+    if (page && dbResponse) {
+      let limit = 1;
+      page = parseInt(page);
+      let startIndex = (page - 1) * limit;
+      let endIndex = page * limit;
+      let pagination = dbResponse.slice(startIndex, endIndex);
+      console.log(pagination);
+      return res.status(200).json({
         error: {
           message: "no error",
           code: "0",
         },
-        data: response ?? "Something went wrong o.O",
+        data: pagination ?? "Something went wrong o.O",
       });
-    } else {
-      res.json({
-        status: "error",
-        error: " product of this category does not exist",
+    } else
+      return res.status(200).json({
+        error: {
+          message: "no error",
+          code: "0",
+        },
+        data: dbResponse ?? "Something went wrong o.O",
       });
-    }
   } catch (e) {
     console.log(e);
-    res.status(200).json({
+    res.status(401).json({
       error: {
-        message: "no error",
-        code: "0",
+        message: e ?? "failed/ Rejected",
+        code: e.code ?? "",
       },
-      data: response ?? "Something went wrong o.O",
+      data: "",
     });
   }
 });
@@ -176,17 +187,17 @@ router.get("/communityBuilds/rating/:id", async (req, res) => {
         data: response ?? "Something went wrong o.O",
       });
     } else {
-      throw 'failed to get rating'
+      throw "failed to get rating";
     }
   } catch (e) {
     console.log(e);
-    res.status(401).json({ error : {
-      message : e['name]'] ?? "rating Failed",
-      code :e.code ?? ""
-    },
-    data: ""
-  
-  });
+    res.status(401).json({
+      error: {
+        message: e["name]"] ?? "rating Failed",
+        code: e.code ?? "",
+      },
+      data: "",
+    });
   }
 });
 
@@ -197,71 +208,72 @@ router.get("/communityBuilds/:id", async (req, res) => {
 
     console.log(response);
     if (response) {
-      res.status(200).json({ error : {
-        message : "no error",
-        code :"0"
-      },
-      data: response ?? "Something went wrong o.O"
-    
-    });
+      res.status(200).json({
+        error: {
+          message: "no error",
+          code: "0",
+        },
+        data: response ?? "Something went wrong o.O",
+      });
     } else {
-      throw 'failed to get Build'
+      throw "failed to get Build";
     }
   } catch (e) {
     console.log(e);
-    res.status(401).json({ error : {
-      message : e['name]'] ?? "Failed to get ID",
-      code :e.code ?? ""
-    },
-    data: ""
-  
-  });
+    res.status(401).json({
+      error: {
+        message: e["name]"] ?? "Failed to get ID",
+        code: e.code ?? "",
+      },
+      data: "",
+    });
   }
 });
 
 router.get("/communityBuilds", async (req, res) => {
   try {
-    let {page} = req.query;
-    if(page) {
-      let limit = 5;
-      page = parseInt(page)
-      let startIndex = (page-1)* limit;
-      let endIndex = page *limit;
-      let pagination =dbResponse.slice(startIndex,endIndex); 
-      console.log(pagination)
-      return res.status(200).json({ error : {
-        message : "no error",
-        code :"0"
-      },
-      data: pagination ?? "Something went wrong o.O"
-    
-    });
-
+    let { page } = req.query;
+    let dbResponse = await userBuild.find({});
+    console.log(await dbResponse);
+    if (page) {
+      let limit = 1;
+      page = parseInt(page);
+      let startIndex = (page - 1) * limit;
+      let endIndex = page * limit;
+      let pagination = dbResponse.slice(startIndex, endIndex);
+      console.log(pagination);
+      return res.status(200).json({
+        error: {
+          message: "no error",
+          code: "0",
+        },
+        data: pagination ?? "Something went wrong o.O",
+      });
     }
 
-    let response = await userBuild.find({}).lean();
+    let response = await dbResponse;
 
     console.log(response);
     if (response.length > 0) {
-      res.status(200).json({ error : {
-        message : "no error",
-        code :"0"
-      },
-      data: response ?? "Something went wrong o.O"
-    
-    });
+      res.status(200).json({
+        error: {
+          message: "no error",
+          code: "0",
+        },
+        data: response ?? "Something went wrong o.O",
+      });
     } else {
-      throw 'failed to get Community Builds'
+      throw "failed to get Community Builds";
     }
   } catch (e) {
     console.log(e);
-    res.status(401).json({ error : {
-      message : e['name]'] ?? "failed to get Community Builds",
-      code :e.code ?? ""
-    },
-    data: ""
-  
-  });
+    res.status(401).json({
+      error: {
+        message: e["name]"] ?? "failed to get Community Builds",
+        code: e.code ?? "",
+      },
+      data: "",
+    });
   }
 });
 
