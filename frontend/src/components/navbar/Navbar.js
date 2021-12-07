@@ -60,6 +60,9 @@ else {
           <li className="nav-item">
             <Drop name="Navigate" />
           </li>
+          <li>
+            <input className="form-control" type="search" placeholder="Search" aria-label="Search"></input>
+          </li>
           <li className="nav-item navImage" style={{ right: "6%"}}>
               <Link to={"/signup"} className="nav-link">
                 Register
