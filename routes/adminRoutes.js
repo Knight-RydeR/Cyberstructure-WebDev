@@ -297,6 +297,7 @@ router.get("/getCategory/:catName", async (req, res) => {
       },
       data: response['_id'] ?? "Something went wrong o.O",
     });
+    else throw 'category Not Found'
   }
   catch(e) {
     res.status(401).json({ error : {
