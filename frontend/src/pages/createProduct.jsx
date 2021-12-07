@@ -25,7 +25,7 @@ const CreateProduct = () => {
 
     const create = (e) => {
         e.preventDefault();
-        authAxios.post('/createProduct', {
+        authAxios.post('/admin/createProduct', {
             nameOfProduct:username,
             price,
             category,
