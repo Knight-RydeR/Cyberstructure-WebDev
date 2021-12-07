@@ -12,21 +12,20 @@ export const DropdownHUB = ({type,changeC,catVal,name}) => {
                         <select
                             value={catVal}
                             onChange={(e)=>{
-                                console.log(e.target.value);
+                                console.log(e.target.value + " XD");
                                 changeC(e.target.value);
                             }}
-                            
                         >
                             <option className="dropdown-item" value="" selected disabled hidden >Choose here</option>
                             <option className="dropdown-item" value="Motherboard">Motherboard</option >
                             <option className="dropdown-item" value="Processor">Processor</option >
-                            <option className="dropdown-item" value="RAM">RAM</option >
-                            <option className="dropdown-item" value="Power Supply">Power Supply</option >
+                            <option className="dropdown-item" value="Ram">RAM</option >
+                            <option className="dropdown-item" value="PSU">Power Supply</option >
                             <option className="dropdown-item" value="Storage">Storage</option >
-                            <option className="dropdown-item" value="Graphic Card">Graphic Card</option >
+                            <option className="dropdown-item" value="GPU">Graphic Card</option >
                             <option className="dropdown-item" value="Cooler">Cooler</option >
                             <option className="dropdown-item" value="Fans">Fans</option >
-                            <option className="dropdown-item"  value="Casing">Casing</option >
+                            <option className="dropdown-item" value="Case">Casing</option >
                         </select>
                     </div>
                 </div>

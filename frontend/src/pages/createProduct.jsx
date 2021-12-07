@@ -21,7 +21,15 @@ const CreateProduct = () => {
     if (localStorage.getItem('accessToken')) history.push('/createProduct');
     else history.push('/login')
 
-    console.log(category)
+    const categoryStuff = (Category) => {
+        authAxios.get(`/admin/getCategory/${Category}`).then(response => {
+            console.log(response.data + " 1")
+            setCategory(response.data.data)
+    
+        }).catch(error => console.log(error))
+    }
+
+    console.log(category + "2")
 
     const create = (e) => {
         e.preventDefault();
@@ -61,7 +69,7 @@ const CreateProduct = () => {
                     <div>
                         <h1 style={{ color: "white" }}>Select Product to Add</h1>
                         <div className="compatDrop mb-3">
-                            <Drop name="Select Category" type="createProduct" changeC={setCategory} catVal={category} />
+                            <Drop name="Select Category" type="createProduct" changeC={categoryStuff} catVal={category} />
                         </div>
                         <div className="AppLogin">
                             <form onSubmit={create}>
