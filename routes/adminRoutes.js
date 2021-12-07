@@ -250,7 +250,7 @@ router.post("/createCategory", async (req, res) => {
     if (!nameOfCategory || typeof nameOfCategory !== "string") {
       throw "invalid username passed";
     }
-
+    nameOfCategory.toLowerCase();
     let response = await categoryModel.create({ nameOfCategory, _id: count });
     if (response) {
       console.log(
@@ -279,6 +279,33 @@ router.post("/createCategory", async (req, res) => {
       },
       data: "",
     });
+  }
+});
+router.get("/getCategory/:catName", async (req, res) => {
+  try{
+    let nameOfCategory = req.params.catName;
+    nameOfCategory.toLowerCase();
+    console.log(nameOfCategory)
+  const response = await categoryModel.find({nameOfCategory}).lean();
+    console.log(await response);
+  
+  if (response)
+   return  await res.status(200).json({
+      error: {
+        message: "no error",
+        code: "0",
+      },
+      data: response['_id'] ?? "Something went wrong o.O",
+    });
+  }
+  catch(e) {
+    res.status(401).json({ error : {
+      message : e?? "Duplicate Account Rejected",
+      code :e.code ?? ""
+    },
+    data: ""
+  
+  });
   }
 });
 

@@ -132,7 +132,7 @@ router.get("/product/:id", async (req, res) => {
 //returns all products matching the category
 router.get("/product", async (req, res) => {
   try {
-    
+    let page = req.query.page;
 
     let dbResponse = await product.find(req.query).lean();
     if (!(await dbResponse)) throw "failed to get products";
