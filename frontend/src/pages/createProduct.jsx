@@ -10,7 +10,7 @@ import ActionCard from '../components/ActionAreaCard'
 import { Link } from "react-router-dom";
 import Nav from '../components/navbar/Navbar'
 import Drop from '../components/DropdownHUB'
-import { authAxios } from './axiosInstances';
+import { authAxios,authAxiosAdmin,authAxiosDefault } from './axiosInstances';
 
 const CreateProduct = () => {
     let [username, setUsername] = useState("");
@@ -21,14 +21,30 @@ const CreateProduct = () => {
     if (localStorage.getItem('accessToken')) history.push('/createProduct');
     else history.push('/login')
 
-    console.log(category)
+  
 
-    const create = (e) => {
+    console.log(category + "2")
+
+    const create = async (e) => {
         e.preventDefault();
-        authAxios.post('/createProduct', {
+        console.log(`in create`);
+        let catID;
+       await  authAxiosAdmin.get(`/getCategory/${category}`).then(response=> {
+            if (response.status == 200) {
+                console.log(response)
+                catID = response.data.data
+                toast.success("Category  Successful!", {
+                    position: toast.POSITION.TOP_RIGHT
+                });
+
+            }
+            else console.log(response);
+            
+        })
+        await authAxiosAdmin.post('/createProduct', {
             nameOfProduct:username,
             price,
-            category,
+            category:catID,
             power,
             imageUrl:"hello"
           }).then(response => {

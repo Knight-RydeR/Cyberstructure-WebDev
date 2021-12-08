@@ -40,8 +40,16 @@ const Products = () => {
     //     }).catch(error=>console.log(error))
 
     // },[])
+    const removeButton = () => {
+
+    }
+
+    const modifyButton = () => {
+
+    }
+
     useEffect(() => {
-        defaultReq.get(`/search/allProducts`).then(response => {
+        defaultReq.get(`/product`).then(response => {
             console.log(response.data.data)
             setProduct(response.data.data)
 
@@ -69,8 +77,12 @@ const Products = () => {
                                                 setCardInvis(false);
                                             }}>
                                                 View details</button>
-                                            <button className="btn btn-danger">Remove</button>
-                                            <button className="btn btn-info">Modify item detail</button>
+                                            <button className="btn btn-danger" onClick={() => {
+                                                removeButton();
+                                            }}>Remove</button>
+                                            <button className="btn btn-info" onClick={() => {
+                                                modifyButton();
+                                            }}>Modify item detail</button>
                                         {/* </Link> */}
                                     </div>
                                 );
