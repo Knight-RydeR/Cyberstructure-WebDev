@@ -25,6 +25,7 @@ router.post("/login", async (req, res) => {
           id: dbResponse._id,
           username: dbResponse.username,
           nick: dbResponse.nick,
+          isAdmin:dbResponse.isAdmin,
         },
         db.config.SECRET,
         {
