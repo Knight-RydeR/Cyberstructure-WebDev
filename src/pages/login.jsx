@@ -40,8 +40,9 @@ const Login =  ()=> {
                     position: toast.POSITION.TOP_RIGHT
                   });
                   
-
-                  if (username == 'Mohammad') localStorage.setItem('admin', '1');
+                  var token = response.data.data;
+                  var decoded = jwt_decode(token);
+                  if (decoded.isAdmin) localStorage.setItem('admin', '1');
 
                   localStorage.setItem('accessToken',JSON.stringify(response.data.data))
                   localStorage.setItem('loggedIn',"1")

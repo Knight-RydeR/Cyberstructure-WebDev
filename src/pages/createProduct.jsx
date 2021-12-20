@@ -10,13 +10,23 @@ import ActionCard from '../components/ActionAreaCard'
 import { Link } from "react-router-dom";
 import Nav from '../components/navbar/Navbar'
 import Drop from '../components/DropdownHUB'
-import { authAxios,authAxiosAdmin,authAxiosDefault } from './axiosInstances';
+import { authAxios,authAxiosAdmin,authAxiosDefault,checkJWTVALID } from './axiosInstances';
 
 const CreateProduct = () => {
+    if (!checkJWTVALID()) {
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("loggedIn");
+        localStorage.removeItem("admin");
+        history.push("/login")
+    
+    
+        }
     let [username, setUsername] = useState("");
     let [price, setPrice] = useState("");
     let [category, setCategory] = useState("");
     let [power, setPower] = useState("");
+    let [selectedFile, setSelectedFile] = useState({});
+
     let history = useHistory();
     if (localStorage.getItem('accessToken')) history.push('/createProduct');
     else history.push('/login')
@@ -33,10 +43,7 @@ const CreateProduct = () => {
             if (response.status == 200) {
                 console.log(response)
                 catID = response.data.data
-                toast.success("Category  Successful!", {
-                    position: toast.POSITION.TOP_RIGHT
-                });
-
+                
             }
             else console.log(response);
             
@@ -46,7 +53,7 @@ const CreateProduct = () => {
             price,
             category:catID,
             power,
-            imageUrl:"hello"
+            imageUrl:selectedFile
           }).then(response => {
 
             if (response.status == 200) {
@@ -68,6 +75,26 @@ const CreateProduct = () => {
                 });
             });
     }
+    const handleFileChange =  async (e)=> {
+    
+            const file = e.target.files[0];
+            const base64 = await convertToBase64(file);
+            setSelectedFile(base64);
+      
+    }
+        
+    const convertToBase64 = (file) => {
+        return new Promise((resolve, reject) => {
+          const fileReader = new FileReader();
+          fileReader.readAsDataURL(file);
+          fileReader.onload = () => {
+            resolve(fileReader.result);
+          };
+          fileReader.onerror = (error) => {
+            reject(error);
+          };
+        });
+      };
 
     return (
         <div>
@@ -88,13 +115,17 @@ const CreateProduct = () => {
                                     </div>
 
                                     <div className="mb-3">
-                                        <label for="Username" class="form-label mb-3" style={{color: "white"}}>Price</label>
-                                        <input type="text" class="form-control" id="Username" placeholder="Enter Product Price here" value={price} onChange={event => setPrice(event.target.value)} />
+                                        <label for="productPrice" class="form-label mb-3" style={{color: "white"}}>Price</label>
+                                        <input type="text" class="form-control" id="productPrice" placeholder="Enter Product Price here" value={price} onChange={event => setPrice(event.target.value)} />
                                     </div>
 
                                     <div className="mb-3">
-                                        <label for="Username" class="form-label mb-3" style={{color: "white"}}>Power rating</label>
-                                        <input type="text" class="form-control" id="Username" placeholder="Enter Product Price here" value={power} onChange={event => setPower(event.target.value)} />
+                                        <label for="productPowerRating" class="form-label mb-3" style={{color: "white"}}>Power rating</label>
+                                        <input type="text" class="form-control" id="productPowerRating" placeholder="Enter Product Price here" value={power} onChange={event => setPower(event.target.value)} />
+                                    </div>
+                                    <div className="mb-3">
+                                        <label for="productImage" class="form-label mb-3" style={{color: "white"}}>Add Image</label>
+                                        <input type="file" class="form-control" id="productImage"  placeholder="Add Image" onChange={event => handleFileChange(event)} />
                                     </div>
 
                                     {/* <div className="mb-3">
