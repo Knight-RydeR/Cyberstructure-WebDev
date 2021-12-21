@@ -33,9 +33,9 @@ const Navbar = (props) => {
             <li className="nav-item ">
               <Drop name="Navigate"/>
             </li>
-            <li>
+            {/* <li>
             <input className="form-control" type="search" placeholder="Search" aria-label="Search"></input>
-            </li>
+            </li> */}
             <li className="nav-item navImage" style={{ right: "5%" }}>
               <button className="btn btn-warning" onClick={logout}>Logout</button>
             </li>
@@ -60,9 +60,9 @@ else {
           <li className="nav-item">
             <Drop name="Navigate" />
           </li>
-          <li>
+          {/* <li>
             <input className="form-control" type="search" placeholder="Search" aria-label="Search"></input>
-          </li>
+          </li> */}
           <li className="nav-item navImage" style={{ right: "6%"}}>
               <Link to={"/signup"} className="nav-link">
                 Register

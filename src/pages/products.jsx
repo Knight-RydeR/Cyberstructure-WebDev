@@ -25,12 +25,13 @@ const Products = () => {
     localStorage.removeItem("admin");
     history.push("/products")
 
-
     }
 }
     const [product, setProduct] = useState([]);
+    let [filtered,setFiltered] = useState([]);
     const [buttonPopup, setButtonPopup] = useState(false);
     const [cardInvis, setCardInvis] = useState(true);
+    const [search,setSearch] = useState("");
     const [selectedItem, setSelectedItem] = useState(null);
     
     var productCategory = "";
@@ -88,7 +89,11 @@ const Products = () => {
     useEffect(() => {
         authAxiosDefault.get(`/product`).then(response => {
             console.log(response.data.data)
+            filtered=response.data.data
+
             setProduct(response.data.data)
+            setFiltered(response.data.data)
+            
 
         }).catch(error => console.log(error))
 
@@ -100,10 +105,29 @@ const Products = () => {
                 <Nav name="Products" />
                 {selectedItem && <Popup trigger={buttonPopup} setTrigger={setButtonPopup} setCard={setCardInvis} category={selectedItem.category} name={selectedItem.nameOfProduct} price={selectedItem.price}>
                 </Popup>}
+                <input className="form-control" type="search" value={search} placeholder="Search" aria-label="Search" onChange={(event)=>
+                    {
+                        
+                        
+                        if(event.target.value==""){ 
+                            setSearch(event.target.value);
+                            setFiltered(product);}
+                        else{
+                            console.log(product[0].nameOfProduct.startsWith("B"));
+                        let tempArray = product.filter(e=>e['nameOfProduct'].toLowerCase().startsWith(event.target.value.trim().toLowerCase()));
+                        console.log(tempArray);
+                        
+                        setFiltered([...tempArray])
+                        setSearch(event.target.value)
+                        }
+                        }}></input>
+
                 <div className="Main">
+                    
                     <div className="Product-CardArea">
                         {
-                            product.length > 0 && product.map(i => {
+                            
+                            filtered.length > 0 && filtered.map(i => {
                                 return (
                                     <div>
                                         {/* <Link to="/products" style={{textDecoration: "none"}}> */}
@@ -117,9 +141,9 @@ const Products = () => {
                                             <button className="btn btn-danger" onClick={() => {
                                                 removeButton(i['_id']);
                                             }}>Remove</button>
-                                            <button className="btn btn-info" onClick={() => {
+                                            {/* <button className="btn btn-info" onClick={() => {
                                                 modifyButton();
-                                            }}>Modify item detail</button>
+                                            }}>Modify item detail</button> */}
                                         {/* </Link> */}
                                     </div>
                                 );
@@ -137,10 +161,27 @@ const Products = () => {
                 <Nav name="Products" />
                 {selectedItem && <Popup trigger={buttonPopup} setTrigger={setButtonPopup} setCard={setCardInvis} category={selectedItem.category} name={selectedItem.nameOfProduct} price={selectedItem.price}>
                 </Popup>}
+
+                <input className="form-control" type="search" value={search} placeholder="Search" aria-label="Search" onChange={(event)=>
+                    {
+                        if(event.target.value==""){ 
+                            setSearch(event.target.value);
+                            setFiltered(product);}
+                        else{
+                            console.log(product[0].nameOfProduct.startsWith("B"));
+                        let tempArray = product.filter(e=>e['nameOfProduct'].toLowerCase().startsWith(event.target.value.trim().toLowerCase()));
+                        console.log(tempArray);
+                        
+                        setFiltered([...tempArray])
+                        setSearch(event.target.value)
+                        }
+                        }}></input>
+
+                        
                 <div className="Main">
                     <div className="Product-CardArea">
                         {
-                            product.length > 0 && product.map(i => {
+                            filtered.length > 0 && filtered.map(i => {
                                 return (
                                     <div>
                                         {/* <Link to="/products" style={{textDecoration: "none"}}> */}

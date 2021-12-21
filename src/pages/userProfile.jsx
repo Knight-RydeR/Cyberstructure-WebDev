@@ -22,11 +22,12 @@ const UserProfile = ()=> {
     history.push("/login")
   }
 
-  const userInfo = () => {
-    return(
-      <div>HELLO WORLD</div>
-    )
-  }
+  // const userInfo = () => {
+  //   return(
+  //     <div>HELLO WORLD</div>
+  //   )
+  // }
+
   if(!accessToken){
 
     history.push("/login");
@@ -63,8 +64,8 @@ console.log(decoded);
               <a className="btn btn-warning mb-4" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Click here to view your builds!" href="/checkBuild" role="button">My Builds</a>
               <p  style={{color: "white"}} className="mb-4">Add more products?</p>
               <a className="btn btn-warning mb-4" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Click here to add products!" href="/createProduct" role="button">Add Products</a>
-              <p  style={{color: "white"}} className="mb-4">Check user list? (Placeholder/API CALL NEEDED)</p>
-              <a className="btn btn-warning mb-4" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Click here to check users!" onClick= {() => {userInfo()}} role="button">User information</a>
+              <p  style={{color: "white"}} className="mb-4">Check user list?</p>
+              <a className="btn btn-warning mb-4" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Click here to check users!" /*onClick= {() => {userInfo()}}*/ href="/users" role="button">User information</a>
             </header>
         </div>
   )

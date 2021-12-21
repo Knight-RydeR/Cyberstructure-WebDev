@@ -35,6 +35,7 @@ const MakeBuild = () => {
     let [fans, setFan] = useState("");
     let [casing, setCasing] = useState("");
     let [products,setProducts] = useState([]);
+
     const create = async (e) => {
         e.preventDefault();
         console.log(motherboard,processor)
@@ -88,40 +89,47 @@ const MakeBuild = () => {
                 {/* <NavSearch /> */}
         <div className="Main">
         <form onSubmit={create}>
-          <div className="Hub-CardArea">
-            <div>
-                    <ActionCard name="Motherboard" description="Choose your motherboard." source={logo7} cardTrigger={cardInvis} setTrigger={()=>setCardInvis(true)}/>
-                    <Drop name="Select Category" type="makeBuild" changeC={setMotherBoard} catVal={motherboard} products={products.filter(e=>e.category==1)}/>
-            </div>
-            <div>
-                    <ActionCard name="Processor" description="Choose your processor." source={logo4} cardTrigger={cardInvis} setTrigger={setCardInvis}/>
-                    <Drop name="Select Category" type="makeBuild" changeC={setProcessor} catVal={processor} products={products.filter(e=>e.category==2)} />
-            </div><div>
-                    <ActionCard name="RAM" description="Choose your RAM." source={logo9} cardTrigger={cardInvis} setTrigger={setCardInvis}/>
-                    <Drop name="Select Category" type="makeBuild" changeC={setRam} catVal={ram} products={products.filter(e=>e.category==3)} />
-            </div><div>
-                    <ActionCard name="Power Supply" description="Choose your Power Supply." source={logo8} cardTrigger={cardInvis} setTrigger={setCardInvis}/>
-                    <Drop name="Select Category" type="makeBuild" changeC={setPsu} catVal={psu} products={products.filter(e=>e.category==4)} />
-            </div><div>
-                    <ActionCard name="Storage" description="Choose your Storage device." source={logo10} cardTrigger={cardInvis} setTrigger={setCardInvis}/>
-                    <Drop name="Select Category" type="makeBuild" changeC={setStorage} catVal={storage} products={products.filter(e=>e.category==5)} />
-            </div><div>
-                    <ActionCard name="Graphic Card" description="Choose your Graphic card." source={logo6} cardTrigger={cardInvis} setTrigger={setCardInvis}/>
-                    <Drop name="Select Category" type="makeBuild" changeC={setGPU} catVal={gpu} products={products.filter(e=>e.category==6)} />
-            </div><div>
-                    <ActionCard name="Cooler" description="Choose your Cooler." source={logo3} cardTrigger={cardInvis} setTrigger={setCardInvis}/>
-                    <Drop name="Select Category" type="makeBuild" changeC={setCooler} catVal={cooler} products={products.filter(e=>e.category==7)} />
-            </div><div>
-                    <ActionCard name="Fans" description="Choose your Fans." source={logo5} cardTrigger={cardInvis} setTrigger={setCardInvis}/>
-                    <Drop name="Select Category" type="makeBuild" changeC={setFan} catVal={fans} products={products.filter(e=>e.category==8)} />
-            </div><div>
-                    <ActionCard name="Casing" description="Choose your Casing." source={logo2} cardTrigger={cardInvis} setTrigger={setCardInvis}/>
-                    <Drop name="Select Category" type="makeBuild" changeC={setCasing} catVal={casing} products={products.filter(e=>e.category==9)} />
-            </div>
-            <div>
-                <button type="submit" class="btn btn-warning mb-4" >Submit</button>
-         </div>
-          </div>
+                <div className="MKB-CardArea">
+                        <div>
+                                <ActionCard name="Motherboard" description="Choose your motherboard." source={logo7} cardTrigger={cardInvis} setTrigger={()=>setCardInvis(true)}/>
+                                <Drop name="Select Category" type="makeBuild" changeC={setMotherBoard} catVal={motherboard} products={products.filter(e=>e.category==2)}/>
+                        </div>
+                        <div>
+                                <ActionCard name="Processor" description="Choose your processor." source={logo4} cardTrigger={cardInvis} setTrigger={setCardInvis}/>
+                                <Drop name="Select Category" type="makeBuild" changeC={setProcessor} catVal={processor} products={products.filter(e=>e.category==1)} />
+                        </div>
+                        <div>
+                                <ActionCard name="RAM" description="Choose your RAM." source={logo9} cardTrigger={cardInvis} setTrigger={setCardInvis}/>
+                                <Drop name="Select Category" type="makeBuild" changeC={setRam} catVal={ram} products={products.filter(e=>e.category==3)} />
+                        </div>
+                        <div>
+                                <ActionCard name="Power Supply" description="Choose your Power Supply." source={logo8} cardTrigger={cardInvis} setTrigger={setCardInvis}/>
+                                <Drop name="Select Category" type="makeBuild" changeC={setPsu} catVal={psu} products={products.filter(e=>e.category==4)} />
+                        </div>
+                        <div>
+                                <ActionCard name="Storage" description="Choose your Storage device." source={logo10} cardTrigger={cardInvis} setTrigger={setCardInvis}/>
+                                <Drop name="Select Category" type="makeBuild" changeC={setStorage} catVal={storage} products={products.filter(e=>e.category==5)} />
+                        </div>
+                        <div>
+                                <ActionCard name="Graphic Card" description="Choose your Graphic card." source={logo6} cardTrigger={cardInvis} setTrigger={setCardInvis}/>
+                                <Drop name="Select Category" type="makeBuild" changeC={setGPU} catVal={gpu} products={products.filter(e=>e.category==6)} />
+                        </div>
+                        <div>
+                                <ActionCard name="Cooler" description="Choose your Cooler." source={logo3} cardTrigger={cardInvis} setTrigger={setCardInvis}/>
+                                <Drop name="Select Category" type="makeBuild" changeC={setCooler} catVal={cooler} products={products.filter(e=>e.category==7)} />
+                        </div>
+                        <div>
+                                <ActionCard name="Fans" description="Choose your Fans." source={logo5} cardTrigger={cardInvis} setTrigger={setCardInvis}/>
+                                <Drop name="Select Category" type="makeBuild" changeC={setFan} catVal={fans} products={products.filter(e=>e.category==8)} />
+                        </div>
+                        <div>
+                                <ActionCard name="Casing" description="Choose your Casing." source={logo2} cardTrigger={cardInvis} setTrigger={setCardInvis}/>
+                                <Drop name="Select Category" type="makeBuild" changeC={setCasing} catVal={casing} products={products.filter(e=>e.category==9)} />
+                        </div>
+                        <div>
+                                <button type="submit" className="btn btn-warning mb-4">Submit</button>
+                        </div>
+                </div>
           </form>
         </div>
         </div>
