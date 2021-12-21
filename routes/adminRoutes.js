@@ -154,19 +154,21 @@ router.get("/allusers", async (req, res) => {
   try{
   const response = await user.find({}).lean();
   //   console.log(response);
-  var usersRegistered = [];
-  response.map((e) => {
-    console.log(e);
-    usersRegistered.push({ users: e.username });
-  });
-  if (response)
+ 
+  if (response){
+    var usersRegistered = [];
+    response.map((e) => {
+      console.log(e);
+      usersRegistered.push({ users: e.username,nickname : e.nick,isAdmin : e.isAdmin });
+    });
    return  await res.status(200).json({
       error: {
         message: "no error",
         code: "0",
       },
-      data: response ?? "Something went wrong o.O",
+      data: usersRegistered ?? "Something went wrong o.O",
     });
+  }
   }
   catch(e) {
     res.status(401).json({ error : {
