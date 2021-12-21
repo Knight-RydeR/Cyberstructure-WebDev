@@ -13,6 +13,7 @@ import Drop from '../components/DropdownHUB'
 import { authAxios,authAxiosAdmin,authAxiosDefault,checkJWTVALID } from './axiosInstances';
 
 const CreateProduct = () => {
+    let history = useHistory();
     if (!checkJWTVALID()) {
         localStorage.removeItem("accessToken");
         localStorage.removeItem("loggedIn");
@@ -27,7 +28,7 @@ const CreateProduct = () => {
     let [power, setPower] = useState("");
     let [selectedFile, setSelectedFile] = useState({});
 
-    let history = useHistory();
+   
     if (localStorage.getItem('accessToken')) history.push('/createProduct');
     else history.push('/login')
 

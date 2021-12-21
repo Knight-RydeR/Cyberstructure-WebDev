@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export const DropdownHUB = ({type,changeC,catVal,name}) => {
+export const DropdownHUB = ({type,changeC,catVal,name,products}) => {
     if (type == "createProduct") {
         return (
             <div>
@@ -45,15 +45,9 @@ export const DropdownHUB = ({type,changeC,catVal,name}) => {
                             }}
                         >
                             <option className="dropdown-item" value="" selected disabled hidden >Choose here</option>
-                            <option className="dropdown-item" value="Motherboard">Motherboard</option >
-                            <option className="dropdown-item" value="Processor">Processor</option >
-                            <option className="dropdown-item" value="Ram">RAM</option >
-                            <option className="dropdown-item" value="PSU">Power Supply</option >
-                            <option className="dropdown-item" value="Storage">Storage</option >
-                            <option className="dropdown-item" value="GPU">Graphic Card</option >
-                            <option className="dropdown-item" value="Cooler">Cooler</option >
-                            <option className="dropdown-item" value="Fans">Fans</option >
-                            <option className="dropdown-item" value="Case">Casing</option >
+                            { 
+                            products.length >0 && products.map(el =><option className="dropdown-item" value={el.nameOfProduct}>{el.nameOfProduct}</option >)
+                            }
                         </select>
                     </div>
             </div>
