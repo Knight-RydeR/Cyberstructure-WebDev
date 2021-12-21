@@ -142,7 +142,7 @@ router.get("/product", async (req, res) => {
     if (!(await dbResponse)) throw "failed to get products";
     console.log(await dbResponse);
     if (page && dbResponse) {
-      let limit = 1;
+      let limit = 2;
       page = parseInt(page);
       let startIndex = (page - 1) * limit;
       let endIndex = page * limit;

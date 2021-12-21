@@ -58,7 +58,7 @@ router.post("/saveBuild", async (req, res) => {
       Fans,
       Case,
     } = req.body;
-    Fans = parseInt(Fans);
+    
     if (!Processor || typeof Processor !== "string") {
       throw 'invalid power passed';
     }
@@ -80,7 +80,7 @@ router.post("/saveBuild", async (req, res) => {
     if (!Cooler || typeof Cooler !== "string") {
       throw 'invalid Cooler passed';
     }
-    if (!Fans || typeof Fans !== "number") {
+    if (!Fans || typeof Fans !== "string") {
       console.log(typeof Fans);
       throw 'invalid Fans passed';
     }

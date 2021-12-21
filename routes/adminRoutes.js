@@ -181,7 +181,7 @@ router.get("/allusers", async (req, res) => {
 
 router.post("/createProduct", async (req, res) => {
   try {
-    let count = (await product.countDocuments({})) + 3;
+    let count = (await product.countDocuments({})) ;
     console.log(`count is ${count} `);
     //create middleware for index
     console.log(req.body);

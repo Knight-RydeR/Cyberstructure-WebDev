@@ -42,8 +42,8 @@ let userBuildSchema = new mongoose.Schema({
         minLength:6
     },
     Fans : {
-        type:Number,
-        min:0  
+        type:String,
+        
     },
     Case : {
         type:String,
