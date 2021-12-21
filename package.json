@@ -18,8 +18,8 @@
     "mongodb": "^3.5.9",
     "mongoose": "^5.9.21",
     "multer": "^1.4.4",
-    "nodemon": "^2.0.15",
     "pathfinder-ui": "^1.0.3",
+    "puppeteer": "^13.0.0",
     "rootpath": "^0.1.2"
   }
 }

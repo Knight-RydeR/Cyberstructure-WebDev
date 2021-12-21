@@ -6,6 +6,7 @@ const jwt = require("jsonwebtoken");
 const product = require("../products/schema");
 const userBuild = require("../userBuild/schema");
 const mongoose = require("mongoose");
+const customScraper = require('../scraper')
 
 let router = express.Router();
 
@@ -134,7 +135,9 @@ router.get("/product/:id", async (req, res) => {
 router.get("/product", async (req, res) => {
   try {
     let page = req.query.page;
-
+    console.log(req.query)
+    delete req.query.page;
+    console.log(req.query)
     let dbResponse = await product.find(req.query).lean();
     if (!(await dbResponse)) throw "failed to get products";
     console.log(await dbResponse);
@@ -277,5 +280,35 @@ router.get("/communityBuilds", async (req, res) => {
     });
   }
 });
+router.get("/bestPrice/:name",async (req,res)=> {
+  try{
+    console.log(customScraper)
+    console.log("here")
+    console.log(req.params.name)
+  let response = await customScraper(`${req.params.name}`);
+  console.log("here" + response);
+  if(Object.entries(response)<=0) throw  "aggregator failed";
+  else {
+ return res.status(200).json({ error : {
+    message : "no error",
+    code :"0"
+  },
+  data: response ?? "Something went wrong o.O"
+
+});
+  }
+}
+catch (e) {
+  return res.status(404).json({
+    error: {
+      message: e["name]"] ?? "failed to get Best price",
+      code: e.code ?? "",
+    },
+    data: "",
+  });
+
+}
+});
+
 
 module.exports = router;
