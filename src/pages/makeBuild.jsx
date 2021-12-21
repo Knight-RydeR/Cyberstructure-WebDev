@@ -16,12 +16,15 @@ import React, {useState,useEffect} from 'react'
 import ActionCard from '../components/ActionAreaCard'
 import { Link } from "react-router-dom";
 import Nav from '../components/navbar/Navbar'
-import Drop from '../components/Dropdown'
+import Drop from '../components/DropdownHUB'
 // import NavSearch from '../components/NavSearch'
 
-const MakeBuild = ()=> {
+const MakeBuild = () => {
 
     const [cardInvis, setCardInvis] = useState(true);
+    let [category, setCategory] = useState("");
+    let cart = [];
+
         // useEffect( ()=>{
         
         // },[])
@@ -34,32 +37,32 @@ const MakeBuild = ()=> {
           <div className="Hub-CardArea">
             <div>
                     <ActionCard name="Motherboard" description="Choose your motherboard." source={logo7} cardTrigger={cardInvis} setTrigger={()=>setCardInvis(true)}/>
-                    <Drop />
+                    <Drop name="Select Category" type="makeBuild" changeC={setCategory} catVal={'Motherboard'} />
             </div>
             <div>
                     <ActionCard name="Processor" description="Choose your processor." source={logo4} cardTrigger={cardInvis} setTrigger={setCardInvis}/>
-                    <Drop />
+                    <Drop name="Select Category" type="makeBuild" changeC={setCategory} catVal={'Processor'} />
             </div><div>
                     <ActionCard name="RAM" description="Choose your RAM." source={logo9} cardTrigger={cardInvis} setTrigger={setCardInvis}/>
-                    <Drop />
+                    <Drop name="Select Category" type="makeBuild" changeC={setCategory} catVal={'Ram'} />
             </div><div>
                     <ActionCard name="Power Supply" description="Choose your Power Supply." source={logo8} cardTrigger={cardInvis} setTrigger={setCardInvis}/>
-                    <Drop />
+                    <Drop name="Select Category" type="makeBuild" changeC={setCategory} catVal={'PSU'} />
             </div><div>
                     <ActionCard name="Storage" description="Choose your Storage device." source={logo10} cardTrigger={cardInvis} setTrigger={setCardInvis}/>
-                    <Drop />
+                    <Drop name="Select Category" type="makeBuild" changeC={setCategory} catVal={'Storage'} />
             </div><div>
                     <ActionCard name="Graphic Card" description="Choose your Graphic card." source={logo6} cardTrigger={cardInvis} setTrigger={setCardInvis}/>
-                    <Drop />
+                    <Drop name="Select Category" type="makeBuild" changeC={setCategory} catVal={'GPU'} />
             </div><div>
                     <ActionCard name="Cooler" description="Choose your Cooler." source={logo3} cardTrigger={cardInvis} setTrigger={setCardInvis}/>
-                    <Drop />
+                    <Drop name="Select Category" type="makeBuild" changeC={setCategory} catVal={'Cooler'} />
             </div><div>
                     <ActionCard name="Fans" description="Choose your Fans." source={logo5} cardTrigger={cardInvis} setTrigger={setCardInvis}/>
-                    <Drop />
+                    <Drop name="Select Category" type="makeBuild" changeC={setCategory} catVal={'Fans'} />
             </div><div>
                     <ActionCard name="Casing" description="Choose your Casing." source={logo2} cardTrigger={cardInvis} setTrigger={setCardInvis}/>
-                    <Drop />
+                    <Drop name="Select Category" type="makeBuild" changeC={setCategory} catVal={'Case'} />
             </div>
           </div>
         </div>

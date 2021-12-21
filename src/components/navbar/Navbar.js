@@ -31,7 +31,7 @@ const Navbar = (props) => {
           </div>
           <div className="navbar-nav mr-auto">
             <li className="nav-item ">
-              <Drop name="Navigate" />
+              <Drop name="Navigate"/>
             </li>
             <li>
             <input className="form-control" type="search" placeholder="Search" aria-label="Search"></input>
