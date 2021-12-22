@@ -28,6 +28,7 @@ const Products = () => {
     }
 }
     const [product, setProduct] = useState([]);
+    const [pageNo, setPageNo] = useState([]);
     let [filtered,setFiltered] = useState([]);
     const [buttonPopup, setButtonPopup] = useState(false);
     const [cardInvis, setCardInvis] = useState(true);
@@ -121,6 +122,10 @@ const Products = () => {
                         setSearch(event.target.value)
                         }
                         }}></input>
+                <label>Pages: </label>
+                <button className="btn btn-warning">1</button>
+                <button className="btn btn-warning">2</button>
+                <button className="btn btn-warning">3</button>
 
                 <div className="Main">
                     
@@ -148,6 +153,8 @@ const Products = () => {
                                     </div>
                                 );
                             })
+
+                            
                         }
     
     

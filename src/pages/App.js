@@ -23,6 +23,7 @@ import axios from 'axios';
 import Products from './products';
 import CheckBuild from "./checkBuild";
 import Users from "./users"
+import Modify from "./modify";
 
 function App() {
   let baseUrl = 'http://localhost:1639/api';
@@ -48,6 +49,7 @@ function App() {
      <Route path="/createProduct" exact> <CreateProduct/></Route>
       <Route path="/MakeBuild"  exact> <MakeBuild/></Route>
       <Route path="/compat" component={Compat}/>
+      <Route path="/modify" component={Modify}/>
         <Route path="/consumption" component={Consumption}/>
         <Route path="/users" component={Users}/>
         <Route path="/bestPrice" component={BestPrice}/>

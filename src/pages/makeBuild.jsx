@@ -92,11 +92,11 @@ const MakeBuild = () => {
                 <div className="MKB-CardArea">
                         <div>
                                 <ActionCard name="Motherboard" description="Choose your motherboard." source={logo7} cardTrigger={cardInvis} setTrigger={()=>setCardInvis(true)}/>
-                                <Drop name="Select Category" type="makeBuild" changeC={setMotherBoard} catVal={motherboard} products={products.filter(e=>e.category==2)}/>
+                                <Drop name="Select Category" type="makeBuild" changeC={setMotherBoard} catVal={motherboard} products={products.filter(e=>e.category==1)}/>
                         </div>
                         <div>
                                 <ActionCard name="Processor" description="Choose your processor." source={logo4} cardTrigger={cardInvis} setTrigger={setCardInvis}/>
-                                <Drop name="Select Category" type="makeBuild" changeC={setProcessor} catVal={processor} products={products.filter(e=>e.category==1)} />
+                                <Drop name="Select Category" type="makeBuild" changeC={setProcessor} catVal={processor} products={products.filter(e=>e.category==2)} />
                         </div>
                         <div>
                                 <ActionCard name="RAM" description="Choose your RAM." source={logo9} cardTrigger={cardInvis} setTrigger={setCardInvis}/>

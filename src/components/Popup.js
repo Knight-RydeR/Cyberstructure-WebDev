@@ -220,7 +220,7 @@ function Popup(props) {
                         props.setTrigger(false)
                         props.setCard(true)}
                     }
-                    >Modify</button>
+                    href="/modify">Modify</button>
                     <div>
                         <img src={props.image} className="icon-images"/>
                         {/* <h3>{props.category}</h3>
