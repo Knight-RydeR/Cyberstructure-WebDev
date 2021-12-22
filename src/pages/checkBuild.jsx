@@ -7,6 +7,7 @@ import ActionCard from '../components/ActionAreaCard'
 import { Link } from "react-router-dom";
 import Nav from '../components/navbar/Navbar'
 import Drop from '../components/DropdownHUB'
+import jwt_decode from "jwt-decode";
 
 
 const CheckBuild = () => {
@@ -17,15 +18,29 @@ const CheckBuild = () => {
     const [cardInvis, setCardInvis] = useState(true);
     const [search,setSearch] = useState("");
     const [selectedItem, setSelectedItem] = useState(null);
+    
+    
     // let count = 1;
 
     useEffect(() => {
-    authAxiosDefault.get('/communityBuilds/:id').then(response => {
-        console.log(response.data.data)
-        setBuild(response.data.data)
+        var token = JSON.parse(localStorage.getItem('accessToken'));
+        console.log(token);
+      
+            var decoded = jwt_decode(token);
+            console.log(decoded)
+            authAxiosDefault.get(`/getUserBuild/${decoded.username}`).then(response => {
+                console.log(response.data.data);
+                setBuild(response.data.data)
+        
+            }).catch(error => console.log(error))
+            
 
-    }).catch(error => console.log(error))
-    }, [])
+        
+        },[])
+        
+        
+    
+    
 
         return (
             <div>
