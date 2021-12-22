@@ -34,6 +34,7 @@ const Products = () => {
     const [cardInvis, setCardInvis] = useState(true);
     const [search,setSearch] = useState("");
     const [selectedItem, setSelectedItem] = useState(null);
+    let [page,setPage] = useState("1");
     
     var productCategory = "";
     var productName = "";
@@ -86,9 +87,9 @@ const Products = () => {
         // })
 
     }
-
+    
     useEffect(() => {
-        authAxiosDefault.get(`/product`).then(response => {
+        authAxiosDefault.get(`/product?page=${page}`).then(response => {
             console.log(response.data.data)
             filtered=response.data.data
 
@@ -98,7 +99,7 @@ const Products = () => {
 
         }).catch(error => console.log(error))
 
-    }, [])
+    }, [page])
 
     if (localStorage.getItem('admin') == '1') {
         return (
@@ -123,9 +124,9 @@ const Products = () => {
                         }
                         }}></input>
                 <label>Pages: </label>
-                <button className="btn btn-warning">1</button>
-                <button className="btn btn-warning">2</button>
-                <button className="btn btn-warning">3</button>
+                <button value={1} onClick={(e)=>setPage(e.target.value)} className="btn btn-warning">1</button>
+                <button value={2} onClick={(e)=>setPage(e.target.value)} className="btn btn-warning">2</button>
+                <button value={3} onClick={(e)=>setPage(e.target.value)} className="btn btn-warning">3</button>
 
                 <div className="Main">
                     
@@ -187,6 +188,10 @@ const Products = () => {
                         
                 <div className="Main">
                     <div className="Product-CardArea">
+                    <label>Pages: </label>
+                <button value={1} onClick={(e)=>setPage(e.target.value)} className="btn btn-warning">1</button>
+                <button value={2} onClick={(e)=>setPage(e.target.value)} className="btn btn-warning">2</button>
+                <button value={3} onClick={(e)=>setPage(e.target.value)} className="btn btn-warning">3</button>
                         {
                             filtered.length > 0 && filtered.map(i => {
                                 return (
