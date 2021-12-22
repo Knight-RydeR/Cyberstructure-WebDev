@@ -1,5 +1,15 @@
 const puppet = require('puppeteer')
 
+String.prototype.replaceAll = function (stringToFind, stringToReplace) {
+    if (stringToFind === stringToReplace) return this;
+    var temp = this;
+    var index = temp.indexOf(stringToFind);
+    while (index != -1) {
+        temp = temp.replace(stringToFind, stringToReplace);
+        index = temp.indexOf(stringToFind);
+    }
+    return temp;
+};
 async function scrape(searchName) {
     console.log("here in scrape")
 
@@ -22,12 +32,14 @@ async function scrape(searchName) {
     })
    
     let {price} = text;
-     price = parseInt(price.replace("Rs.","").replace(",",""))
+    console.log(price.replace("Rs.",""))
+     price = price.replace("Rs.","").replaceAll(',','')
      text.price = price;
-    console.log(text);
+    console.log(price);
     browser.close();
     return text;
 
 }
+
 
 module.exports = scrape;

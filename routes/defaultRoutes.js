@@ -204,7 +204,34 @@ router.get("/communityBuilds/rating/:id", async (req, res) => {
     });
   }
 });
+router.get("/getUserBuild/:username", async (req, res) => {
+  try {
+    let username = req.params.username;
+    let response = await userBuild.find({ userName:username}).lean();
 
+    console.log(response);
+    if (response) {
+      res.status(200).json({
+        error: {
+          message: "no error",
+          code: "0",
+        },
+        data: response ?? "Something went wrong o.O",
+      });
+    } else {
+      throw "failed to get Build";
+    }
+  } catch (e) {
+    console.log(e);
+    res.status(401).json({
+      error: {
+        message: e["name]"] ?? "Failed to get ID",
+        code: e.code ?? "",
+      },
+      data: "",
+    });
+  }
+});
 router.get("/communityBuilds/:id", async (req, res) => {
   try {
     let id = req.params.id;
