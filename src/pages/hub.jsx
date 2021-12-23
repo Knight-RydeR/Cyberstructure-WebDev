@@ -31,7 +31,7 @@ const Hub = () => {
                                 <ActionCard name="Make Build" description="The Heaven for PC enthusiasts. Come here to design your own PC." source={logo5} cardTrigger={cardInvis} setTrigger={setCardInvis}/>
                             </Link>
                         </div>
-                        <div>
+                        {/* <div>
                             <Link style={{textDecoration: "none"}} to="/compat">
                                 <ActionCard name="Compatibility" description="Willing to upgrade something but don't know about compatibility? We've got your back." source={logo3} cardTrigger={cardInvis} setTrigger={setCardInvis}/>
                             </Link>
@@ -40,7 +40,7 @@ const Hub = () => {
                             <Link style={{textDecoration: "none"}} to="/consumption">
                                 <ActionCard name="Consumption" description="Not sure if your PC is getting enough power? Tell us the build and we'll tell you the consumption!" source={logo4} cardTrigger={cardInvis} setTrigger={setCardInvis}/>
                             </Link>
-                        </div>
+                        </div> */}
                         <div>
                             <Link style={{textDecoration: "none"}} to="/bestPrice">
                                 <ActionCard name="Best Price" description="Looking to buy a new component? Come here, let us bring to you the best deals available!" source={logo2} cardTrigger={cardInvis} setTrigger={setCardInvis}/>

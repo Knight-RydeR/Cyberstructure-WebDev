@@ -50,8 +50,8 @@ const Users = () => {
                             return (
                                 <tr>
                                     <td>{count++}</td>
-                                    <td>{i.username}</td>
-                                    <td>{i.nick}</td>
+                                    <td>{i.users}</td>
+                                    <td>{i.nickname}</td>
                                     <td>{`${i.isAdmin}`}</td>
                                 </tr>
                             )

@@ -61,7 +61,7 @@ function Popup(props) {
             setCasingPrice(response.data.data)
     
         }).catch(error => console.log(error))}
-        else if (props.type='con') {
+        else if (props.type=='con') {
 
         }
         }, [])
@@ -216,11 +216,11 @@ function Popup(props) {
                     }
                     >Close</button>
     
-                    <button className="modify-btn" onClick={() => {
+                    {/* <button className="modify-btn" onClick={() => {
                         props.setTrigger(false)
                         props.setCard(true)}
                     }
-                    href="/modify">Modify</button>
+                    href="/modify">Modify</button> */}
                     <div>
                         <img src={props.image} className="icon-images"/>
                         {/* <h3>{props.category}</h3>

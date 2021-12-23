@@ -105,7 +105,7 @@ const Products = () => {
         return (
             <div>
                 <Nav name="Products" />
-                {selectedItem && <Popup trigger={buttonPopup} setTrigger={setButtonPopup} setCard={setCardInvis} category={selectedItem.category} name={selectedItem.nameOfProduct} price={selectedItem.price}>
+                {selectedItem && <Popup trigger={buttonPopup} setTrigger={setButtonPopup} setCard={setCardInvis} image={selectedItem.imageUrl} category={selectedItem.category} name={selectedItem.nameOfProduct} price={selectedItem.price}>
                 </Popup>}
                 <input className="form-control" type="search" value={search} placeholder="Search" aria-label="Search" onChange={(event)=>
                     {
@@ -167,7 +167,7 @@ const Products = () => {
         return (
             <div>
                 <Nav name="Products" />
-                {selectedItem && <Popup trigger={buttonPopup} setTrigger={setButtonPopup} setCard={setCardInvis} category={selectedItem.category} name={selectedItem.nameOfProduct} price={selectedItem.price}>
+                {selectedItem && <Popup trigger={buttonPopup} setTrigger={setButtonPopup} setCard={setCardInvis} category={selectedItem.imageUrl} name={selectedItem.nameOfProduct} price={selectedItem.price}>
                 </Popup>}
 
                 <input className="form-control" type="search" value={search} placeholder="Search" aria-label="Search" onChange={(event)=>
@@ -184,14 +184,14 @@ const Products = () => {
                         setSearch(event.target.value)
                         }
                         }}></input>
-
-                        
-                <div className="Main">
-                    <div className="Product-CardArea">
-                    <label>Pages: </label>
+                
+                <label>Pages: </label>
                 <button value={1} onClick={(e)=>setPage(e.target.value)} className="btn btn-warning">1</button>
                 <button value={2} onClick={(e)=>setPage(e.target.value)} className="btn btn-warning">2</button>
                 <button value={3} onClick={(e)=>setPage(e.target.value)} className="btn btn-warning">3</button>
+                        
+                <div className="Main">
+                    <div className="Product-CardArea">
                         {
                             filtered.length > 0 && filtered.map(i => {
                                 return (

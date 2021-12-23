@@ -14,8 +14,8 @@ import Login from "./login"
 import Register from "./signup";
 import CreateProduct from "./createProduct";
 import MakeBuild from "./makeBuild";
-import Compat from "./compat";
-import Consumption from "./consumption";
+// import Compat from "./compat";
+// import Consumption from "./consumption";
 import BestPrice from "./bestPrice";
 import Community from "./community";
 import UserProfile from "./userProfile";
@@ -48,9 +48,9 @@ function App() {
      <Route path="/signup"  exact> <Register/></Route>
      <Route path="/createProduct" exact> <CreateProduct/></Route>
       <Route path="/MakeBuild"  exact> <MakeBuild/></Route>
-      <Route path="/compat" component={Compat}/>
+      {/* <Route path="/compat" component={Compat}/> */}
       <Route path="/modify" component={Modify}/>
-        <Route path="/consumption" component={Consumption}/>
+        {/* <Route path="/consumption" component={Consumption}/> */}
         <Route path="/users" component={Users}/>
         <Route path="/bestPrice" component={BestPrice}/>
         <Route path="/community" component={Community}/>
